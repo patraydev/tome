@@ -113,7 +113,7 @@ _**The Tome** MVP will encompass:_
 
 ## Post-MVP
 
-> User Authentication, Password Reset, File Upload
+> User Authentication, Password Reset, User Icons
 
 ***
 
