@@ -9,27 +9,27 @@
 DatabaseCleaner.clean_with(:truncation)
 
 
-@admin = User.create!(username: 'admin', email: 'admin@email.com', password: '123456')
+# @admin = User.create!(username: 'admin', email: 'admin@email.com', password: '123456')
 
-puts "#{User.count} users created"
+# puts "#{User.count} users created"
 
-@salty = Flavor.create!(name: 'salty')
-@sweet = Flavor.create!(name: 'sweet')
-@sour = Flavor.create!(name: 'sour')
-@bitter = Flavor.create!(name: 'bitter')
-@umami = Flavor.create!(name: 'umami')
+# @salty = Flavor.create!(name: 'salty')
+# @sweet = Flavor.create!(name: 'sweet')
+# @sour = Flavor.create!(name: 'sour')
+# @bitter = Flavor.create!(name: 'bitter')
+# @umami = Flavor.create!(name: 'umami')
 
-puts "#{Flavor.count} flavors created"
+# puts "#{Flavor.count} flavors created"
 
-Food.create!(name: 'pizza', user: @admin, flavors: [@salty, @sweet, @umami])
-@ice_cream = Food.create!(name: 'ice cream', user: @admin)
+# Food.create!(name: 'pizza', user: @admin, flavors: [@salty, @sweet, @umami])
+# @ice_cream = Food.create!(name: 'ice cream', user: @admin)
 
-@ice_cream.flavors.push(@sweet, @salty)
+# @ice_cream.flavors.push(@sweet, @salty)
 
-@tacos = Food.create!(name: 'tacos', user: @admin)
+# @tacos = Food.create!(name: 'tacos', user: @admin)
 
-@salty.foods << @tacos
-@sour.foods << @tacos
-@umami.foods << @tacos
+# @salty.foods << @tacos
+# @sour.foods << @tacos
+# @umami.foods << @tacos
 
-puts "#{Food.count} foods created"
+# puts "#{Food.count} foods created"
