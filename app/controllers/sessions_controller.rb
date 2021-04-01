@@ -1,12 +1,13 @@
 class SessionsController < Devise::SessionsController
+  include ActionController::MimeResponds
 
   def create
     @user = User.find_by_email(user_params[:email])
     return invalid_login_attempt unless @user
 
-    if user && user.valid_password?(sign_in_params[:password])
-      token = user.generate_jwt
-      render json: token.to_json
+    if @user && @user.valid_password?(sign_in_params[:password])
+      @token = @user.generate_jwt
+      render json: @token.to_json
     else
       invalid_login_attempt
     end
