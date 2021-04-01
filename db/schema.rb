@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_165028) do
+ActiveRecord::Schema.define(version: 2021_04_01_192049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 2021_04_01_165028) do
     t.string "top"
     t.bigint "program_id"
     t.index ["program_id"], name: "index_cocktails_on_program_id"
+  end
+
+  create_table "jwt_blacklist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
   create_table "libraries", id: false, force: :cascade do |t|
