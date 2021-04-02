@@ -1,0 +1,27 @@
+header {
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: left;
+  padding: 2rem;
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: blueviolet; */
+}
+
+.layout-main{
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+}
+
+.layout-nav{
+  flex-grow: 0;
+}
+
+.layout-kids{
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+}

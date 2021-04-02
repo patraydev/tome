@@ -1,0 +1,21 @@
+.cocktail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.weird-circle{
+  min-width: 66vw;
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  position: relative;
+}
+
+
+
+
