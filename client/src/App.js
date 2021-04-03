@@ -21,15 +21,16 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
     const history = useHistory();
 
-  //   useEffect(() => {
-  //     const handleVerify = async () => {
-  //       const currentUser = await verifyUser();
-  //       setCurrentUser(currentUser);
-  //     };
-  //     handleVerify();
-  //   }, []);
+    // useEffect(() => {
+    //   const handleVerify = async () => {
+    //     const currentUser = await verifyUser();
+    //     setCurrentUser(currentUser);
+    //   };
+    //   handleVerify();
+    // }, [currentUser]);
 
   const handleLogin = async (formData) => {
+    console.log(formData);
     const currentUser = await loginUser(formData);
     setCurrentUser(currentUser);
     history.push("/cocktails");
