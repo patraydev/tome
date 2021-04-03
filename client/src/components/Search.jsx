@@ -3,6 +3,7 @@ import { useState } from "react";
 import SearchResults from "../screens/SearchResults.jsx";
 import Modal from './Modal.jsx';
 
+import '../assets/style/Search.css';
 
 function Search({cocktails}) {
   const [show, setShow] = useState(false);
@@ -32,20 +33,19 @@ function Search({cocktails}) {
       <Modal show={show} handleClose={hideModal} size='large'>
         <SearchResults searchTerm={formData.searchTerm} cocktails={cocktails}/>
       </Modal>
-      <form
+      <form className='search-form'
         onSubmit={(e) => {
           e.preventDefault();
           showModal();
         }}
       >
-        <label htmlFor="search">
+        <label htmlFor="search"></label>
           <input
             name="searchTerm"
             type="text"
             value={searchTerm}
             onChange={handleChange}
           />
-        </label>
         <button type="submit">Search</button>
       </form>
     </div>
