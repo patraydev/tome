@@ -43,9 +43,12 @@
 }
 
 .display-block {
-  display: block;
+  transition: opacity .5s linear;  
+  transform:translate(0);
+  opacity: 1;
 }
 
 .display-none {
-  display: none;
+  transform:translate(666px);
+  opacity: 0;
 }
