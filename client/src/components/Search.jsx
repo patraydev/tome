@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-import { showModal, hideModal } from "../helpers/modal.js";
 import SearchResults from "../screens/SearchResults.jsx";
+import Modal from './Modal.jsx';
+
 
 function Search({cocktails}) {
   const [show, setShow] = useState(false);
 
   const [formData, setFormData] = useState({ searchTerm: "" });
+  const { searchTerm } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,6 +17,15 @@ function Search({cocktails}) {
       [name]: value,
     }));
   };
+
+   const showModal = () => {
+    setShow(true);
+  };
+  
+   const hideModal = () => {
+    setShow(false);
+  };
+
 
   return (
     <div className="search-main">
