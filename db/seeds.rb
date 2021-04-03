@@ -13,6 +13,7 @@ DatabaseCleaner.clean_with(:truncation)
 @betty = Program.create!(name: 'The Betty', location: 'Chicago', sharing_enabled: false)
 @anker = Program.create!(name: 'Publican Anker', location: 'Wicker Park, Chicago', sharing_enabled: false)
 @vh = Program.create!(name: 'The Violet Hour', location: 'Chicago', sharing_enabled: false)
+@guest = Program.create!(name: 'Guest', location: 'Undisclosed', sharing_enabled: true)
 
 puts "#{Program.count} bar programs created"
 

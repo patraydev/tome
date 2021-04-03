@@ -29,7 +29,7 @@ function Search({cocktails}) {
 
   return (
     <div className="search-main">
-      <Modal show={show} handleClose={hideModal}>
+      <Modal show={show} handleClose={hideModal} size='large'>
         <SearchResults searchTerm={formData.searchTerm} cocktails={cocktails}/>
       </Modal>
       <form

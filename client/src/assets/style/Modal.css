@@ -9,12 +9,37 @@
 
 .modal-main {
   position:fixed;
-  background: white;
-  width: 80%;
-  height: auto;
+  background: #3c3c3c;
+  width: 90%;
+  height: 90%;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+  /* grid? */
+}
+
+
+
+.large{
+  width: 90%;
+  height: 90%;
+}
+
+.small{
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.small button{
+  font-size: 1em;
+}
+
+.close-button{
+  align-self: flex-end;
+  padding: 2em;
+  font-size: 5em;
 }
 
 .display-block {

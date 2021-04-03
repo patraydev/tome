@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import Modal from "../components/Modal.jsx";
-import CocktailDetail from "../screens/SearchResults.jsx";
+import Search from "../components/Search.jsx";
 
 import {
   readAllCocktails,
@@ -21,7 +21,7 @@ function CocktailContainer(props) {
 
   useEffect(() => {
     const fetchCocktails = async () => {
-      const result = await readAllTCocktails();
+      const result = await readAllCocktails();
       setCocktails(result);
     };
     fetchCocktails();
