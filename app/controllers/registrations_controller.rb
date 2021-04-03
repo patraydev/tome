@@ -2,6 +2,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
+    
+    @guest = Program.find_by_name('Guest')
+    @user.program_id = @guest.id if @user.program_id == nil
+
     if User.find_by_email(user_params[:email])
       warden.custom_failure!
       render json: { error: 'already registered' }, status: :unprocessable_entity

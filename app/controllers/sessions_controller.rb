@@ -7,7 +7,10 @@ class SessionsController < Devise::SessionsController
 
     if @user && @user.valid_password?(sign_in_params[:password])
       @token = @user.generate_jwt
-      render json: @token.to_json
+      render json: {
+        user: @user,
+        token: @token
+        }, status: :ok
     else
       invalid_login_attempt
     end

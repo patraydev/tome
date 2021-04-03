@@ -32,13 +32,13 @@ function App() {
   const handleLogin = async (formData) => {
     const currentUser = await loginUser(formData);
     setCurrentUser(currentUser);
-    history.push("/");
+    history.push("/cocktails");
   };
 
   const handleRegister = async (formData) => {
     const currentUser = await registerUser(formData);
     setCurrentUser(currentUser);
-    history.push("/");
+    history.push("/cocktails");
   };
 
   const handleLogout = () => {
@@ -51,9 +51,6 @@ function App() {
     <div className="App">
       <Layout currentUser={currentUser} handleLogout={handleLogout}>
         <Switch>
-          <Route path="/login">
-            <Login handleLogin={handleLogin} />
-          </Route>
           <Route path="/register">
             <Register handleRegister={handleRegister} />
           </Route>
@@ -61,7 +58,7 @@ function App() {
             <CocktailContainer currentUser={currentUser} />
           </Route>
           <Route path="/">
-            <Dashboard />
+            <Dashboard handleLogin={handleLogin}/>
           </Route>
         </Switch>
       </Layout>

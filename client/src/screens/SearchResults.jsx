@@ -1,12 +1,12 @@
 import {useState,useEffect } from "react";
 
-function CocktailDetail(props) {
+function SearchResults(props) {
 const [] = useState();
 useEffect(() => {
 
 },[]);
 
-return ();
+return (<>=P</>);
 };
 
-export default CocktailDetail
+export default SearchResults
