@@ -4,8 +4,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable,  and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :trackable, :invitable,:recoverable, :rememberable, :validatable, :confirmable
-
+  
   def generate_jwt
-    JWT.encode({id: id, exp: 0}, Rails.application.secrets.secret_key_base)
+    now = Time.current
+    JWT.encode({id: id, exp: (now + 3.days).to_i}, Rails.application.secrets.secret_key_base.to_s)
   end
 end
