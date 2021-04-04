@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::API
   respond_to :json
-  before_action :process_token
 
   def authenticate_user!(options = {})
     head :unauthorized unless signed_in?
@@ -10,19 +9,29 @@ class ApplicationController < ActionController::API
     @current_user_id.present?
   end
 
-  def current_user
-    @current_user ||= super || User.find(@current_user_id)
+  SECRET_KEY = Rails.application.secrets.secret_key_base.to_s
+
+  def encode(payload, exp = 1.year.from_now)
+    payload[:exp] = exp.to_i
+    JWT.encode(payload, SECRET_KEY)
   end
 
-  def process_token
-    if request.headers['Authorization'].present?
-      begin
-        jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1].remove('"'), Rails.application.secrets.secret_key_base).first
-        @current_user_id = jwt_payload['id']
-      rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
-        head :unauthorized
-      end
+  def decode(token)
+    decoded = JWT.decode(token, SECRET_KEY)[0]
+    HashWithIndifferentAccess.new decoded
+  end
+
+  def authorize_request
+    header = request.headers['Authorization']
+    header = header.split(' ').last if header
+    begin
+      @decoded = decode(header)
+      @current_user_id = @decoded[:id]
+      @current_user = User.find(@current_user_id)
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { errors: e.message }, status: :unauthorized
+    rescue JWT::DecodeError => e
+      render json: { errors: e.message }, status: :unauthorized
     end
   end
-
 end

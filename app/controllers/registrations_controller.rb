@@ -10,8 +10,11 @@ class RegistrationsController < Devise::RegistrationsController
       warden.custom_failure!
       render json: { error: 'already registered' }, status: :unprocessable_entity
     elsif @user.save
-      token = @user.generate_jwt
-        render json: token.to_json
+      @token = @user.generate_jwt
+      render json: {
+        user: @user,
+        token: @token
+        }, status: :ok
     else
       warden.custom_failure!
       render json: { error: 'signup error' }, status: :unprocessable_entity

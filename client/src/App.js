@@ -21,13 +21,13 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
     const history = useHistory();
 
-    // useEffect(() => {
-    //   const handleVerify = async () => {
-    //     const currentUser = await verifyUser();
-    //     setCurrentUser(currentUser);
-    //   };
-    //   handleVerify();
-    // }, [currentUser]);
+    useEffect(() => {
+      const handleVerify = async () => {
+        const currentUser = await verifyUser();
+        setCurrentUser(currentUser);
+      };
+      handleVerify();
+    }, []);
 
   const handleLogin = async (formData) => {
     console.log(formData);

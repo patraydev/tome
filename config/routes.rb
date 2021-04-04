@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :cocktails
   resources :programs
+  get '/auth/verify', to: 'authentication#verify'
   devise_for :users, 
   controllers: { 
     invitations: 'users_invitations', 
