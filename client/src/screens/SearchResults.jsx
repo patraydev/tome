@@ -1,32 +1,32 @@
-import {useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import '../assets/style/SearchResults.css';
+import "../assets/style/SearchResults.css";
 
+function SearchResults({ searchTerm, title, cocktails }) {
+  const [filteredCocktails, setFilteredCocktails] = useState([]);
 
-function SearchResults({searchTerm,title,cocktails}) {
-const [] = useState();
-useEffect(() => {
+  useEffect(() => {
+    const filtered = cocktails.filter((cocktail) =>
+      cocktail.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-},[]);
+    setFilteredCocktails(filtered);
+  }, [cocktails, searchTerm]);
 
-  const filteredCocktails = cocktails.map((cocktail) => {
-    cocktail.name.includes(searchTerm)  
-}) 
-  
-const list = cocktails.map((cocktail, index) =>
-  <div className='list-item' key={index}>
-    {cocktail.name}
-    </div>
-)
-  
-  return (
-    <div className='results-container'>
-      <div className='title'>{`${title}`}</div>
-      <div className='results-list'>
-        {list}
+  const list =
+    filteredCocktails &&
+    filteredCocktails.map((cocktail, index) => (
+      <div className="list-item" key={index}>
+        {cocktail ? cocktail.name : "nothing found"}
       </div>
+    ));
+
+  return (
+    <div className="results-container">
+      <div className="title">{`${title}`}</div>
+      <div className="results-list">{list}</div>
     </div>
   );
-};
+}
 
-export default SearchResults
+export default SearchResults;
