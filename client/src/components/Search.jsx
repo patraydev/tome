@@ -8,7 +8,7 @@ import "../assets/style/Search.css";
 function Search({ cocktails }) {
   const [show, setShow] = useState(false);
 
-  const [formData, setFormData] = useState({ searchTerm: "" });
+  const [formData, setFormData] = useState({ searchTerm: "cat" });
   const { searchTerm } = formData;
 
   const handleChange = (e) => {
