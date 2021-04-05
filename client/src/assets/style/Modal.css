@@ -23,13 +23,13 @@
 
 
 .large{
-  width: 90%;
-  height: 90%;
+  width: 90vw;
+  height: 90vh;
 }
 
 .small{
-  width: 50%;
-  height: 50%;
+  width: 50vw;
+  height: 50vh;
   display: flex;
   flex-direction: column;
 }
