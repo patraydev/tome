@@ -3,7 +3,8 @@
   grid-template-columns: 2fr 2fr 1fr;
   gap: 10px;
   grid-template-rows: 1fr 4fr 2fr;
-  max-height: 90vh;
+  min-height: 85vh;
+  margin: 0 5px;
 }
 
 /* .results-list-container{
