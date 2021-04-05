@@ -9,12 +9,16 @@
   display: flex;
   flex-direction: column;
   max-width: 40vw;
+  align-items: center;
 }
 
 .search-form input{
   min-height: 13vh;
-  min-width: 40vw;
+  max-width: 40vw;
   margin: 1em;
   background-color: #5c5c5c;
+  border: 2px solid #fadde1;
+  border-radius: 25px;
   font-size: 3em;
+  padding-left: 10px;
 }

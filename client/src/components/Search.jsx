@@ -8,7 +8,7 @@ import "../assets/style/Search.css";
 function Search({ cocktails }) {
   const [show, setShow] = useState(false);
 
-  const [formData, setFormData] = useState({ searchTerm: "cat" });
+  const [formData, setFormData] = useState({ searchTerm: "" });
   const { searchTerm } = formData;
 
   const handleChange = (e) => {
@@ -49,6 +49,7 @@ function Search({ cocktails }) {
           type="text"
           value={searchTerm}
           onChange={handleChange}
+          autoFocus
         />
         <button type="submit">Search</button>
       </form>

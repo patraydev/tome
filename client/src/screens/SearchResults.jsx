@@ -32,6 +32,11 @@ function SearchResults({ searchTerm, title, cocktails }) {
     <div className="results-container">
       <div className="title">{`${title}`}</div>
       <div className="results-list">{list}</div>
+      <div className='display'>cocktail goes here</div>
+      <div className='detail-button-container'>
+        <button>Edit</button>
+        <button>Add to Library</button>
+      </div>
     </div>
   );
 }

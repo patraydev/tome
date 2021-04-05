@@ -16,3 +16,21 @@
   border: 5px solid #fadde1;
   border-radius: 25px;
 }
+
+.display{
+  border: 5px solid #fadde1;
+  border-radius: 25px;
+}
+
+.detail-button-container{
+  position: fixed;
+  right:0;
+  bottom:0;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-button-container button {
+  font-size: 1em;
+  margin: 5px;
+}
