@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
 import "../assets/style/SearchResults.css";
+import DisplayCocktail from "../components/DisplayCocktail";
 
 function SearchResults({ searchTerm, title, cocktails }) {
   const [filteredCocktails, setFilteredCocktails] = useState([]);
+  const [displayType, setDisplayType] = useState("display");
   const [displayCocktail, setDisplayCocktail] = useState({});
 
   useEffect(() => {
@@ -38,10 +40,15 @@ function SearchResults({ searchTerm, title, cocktails }) {
   return (
     <div className="results-container">
       {/* <div className="results-list-container"> */}
-        <div className="title">{`${title}`}</div>
-        <div className="results-list">{list}</div>
+      <div className="title">{`${title}`}</div>
+      <div className="results-list">{list}</div>
       {/* </div> */}
-      <div className="display">cocktail goes here</div>
+      <div className="display">
+        <DisplayCocktail
+          displayType={displayType}
+          displayCocktail={displayCocktail}
+        />
+      </div>
       <div className="detail-button-container">
         <button>Edit</button>
         <button>Add to Library</button>
