@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Route, Switch, useHistory } from "react-router-dom";
 
 import Modal from "../components/Modal.jsx";
 import Search from "../components/Search.jsx";
+import EditCocktail from "../screens/EditCocktail.jsx";
 
 import {
   readAllCocktails,
@@ -11,12 +12,12 @@ import {
   destroyCocktail,
 } from "../helpers/cocktails.js";
 
-import circle from "../assets/images/circle.png";
 import "../assets/style/CocktailContainer.css";
 
 function CocktailContainer(props) {
   const [cocktails, setCocktails] = useState([]);
   const history = useHistory();
+
   const { currentUser } = props;
 
   useEffect(() => {
@@ -33,16 +34,16 @@ function CocktailContainer(props) {
   //   history.push("/cocktails");
   // };
 
-  // const editCocktail = async (id, formData) => {
-  //   const updatedCocktail = await updateCocktail(id, formData);
-  //   setCocktails((prevState) =>
-  //     prevState.map((cocktail) => {
-  //       return cocktail.id === Number(id) ? updatedCocktail : cocktail;
-  //     })
-  //   );
-  //   history.push(`/${id}`);
-  // };
-  
+  const editCocktail = async (id, formData) => {
+    const updatedCocktail = await updateCocktail(id, formData);
+    setCocktails((prevState) =>
+      prevState.map((cocktail) => {
+        return cocktail.id === Number(id) ? updatedCocktail : cocktail;
+      })
+    );
+    history.push(`/${id}`);
+  };
+
   // const deleteCocktail = async (id) => {
   //   await destroyCocktail(id);
   //   setCocktails((prevState) =>
@@ -53,13 +54,19 @@ function CocktailContainer(props) {
   //   history.push("/cocktails");
   // };
 
-  return <Search cocktails={cocktails}/>;
+  return (
+    <>
+      <Search cocktails={cocktails} currentUser={currentUser} />
+      <Switch>
+        <Route path="/edit/:id">
+          <EditCocktail currentUser={currentUser} />
+        </Route>
+        {/* <Route path='/new'>
+      <NewCocktail/>
+      </Route> */}
+      </Switch>
+    </>
+  );
 }
 
 export default CocktailContainer;
-
-
-
-
-
-
