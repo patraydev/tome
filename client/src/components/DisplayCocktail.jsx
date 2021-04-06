@@ -27,10 +27,10 @@ function DisplayCocktail({ displayType, displayCocktail }) {
       <div className="top">
         {displayCocktail.top ? `top: ${displayCocktail.top}` : null}
       </div>
-      <div className="glass">{`glass: ${displayCocktail.glass}`}</div>
-      <div className="ice">{`ice: ${displayCocktail.ice}`}</div>
-      <div className="garnish">{`garnish: ${displayCocktail.garnish}`}</div>
-      <div className="method">{`method: ${displayCocktail.method}`}</div>
+      <div className="glass">{displayCocktail.glass ?`glass: ${displayCocktail.glass}`: null}</div>
+      <div className="ice">{displayCocktail.ice ?`ice: ${displayCocktail.ice}`: null}</div>
+      <div className="garnish">{displayCocktail.garnish ?`garnish: ${displayCocktail.garnish}`: null}</div>
+      <div className="method">{displayCocktail.method ?`method: ${displayCocktail.method}`: null}</div>
       <div className="description">
         {displayCocktail.description ? displayCocktail.description : null}
       </div>

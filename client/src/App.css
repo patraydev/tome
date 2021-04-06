@@ -25,6 +25,11 @@ button{
   color: #fadde1;
   padding: 18px 48px;
   align-items: center;
+  outline: none;
+}
+
+button:active{
+  background-color:  #fadde1;
 }
 
 input, textarea {
@@ -32,6 +37,7 @@ input, textarea {
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: hidden;
+  font-family: 'Ilisarniq';
 }
 
 input:focus, textarea:focus, select:focus {
@@ -39,5 +45,5 @@ input:focus, textarea:focus, select:focus {
 }
 
 * {
-  transition: 1000ms;
+  transition: 333ms;
 }

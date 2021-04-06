@@ -5,7 +5,7 @@ import Modal from "../components/Modal";
 
 import "../assets/style/EditCocktail.css";
 
-function EditCocktail({ cocktails, editCocktail }) {
+function NewCocktail({ newCocktail }) {
   const [show, setShow] = useState(true);
   const [displayCocktail, setDisplayCocktail] = useState({
     name: "",
@@ -28,11 +28,6 @@ function EditCocktail({ cocktails, editCocktail }) {
   },[])
 
 
-  useEffect(() => {
-    setDisplayCocktail(
-      cocktails.find((cocktail) => cocktail.id === parseInt(id))
-    );
-  }, [cocktails]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +39,7 @@ function EditCocktail({ cocktails, editCocktail }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editCocktail(id,displayCocktail);
+    newCocktail(displayCocktail);
   };
 
   const showModal = () => {
@@ -181,4 +176,4 @@ function EditCocktail({ cocktails, editCocktail }) {
   );
 }
 
-export default EditCocktail;
+export default NewCocktail;

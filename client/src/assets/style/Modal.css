@@ -17,7 +17,6 @@
   transform: translate(-50%,-50%);
   border: 5px solid #fadde1;
   border-radius: 25px;
-  /* grid? */
 }
 
 
@@ -34,6 +33,11 @@
   flex-direction: column;
 }
 
+.medium{
+  width: 80vw;
+  height: 70vh;
+}
+
 .small button{
   font-size: 1em;
 }
@@ -44,7 +48,15 @@
   right: 0;
   top: 0;
   margin: 5px;
+}
 
+.small .close-button{
+  max-width: .2em;
+}
+
+.medium .close-button{
+  max-width: .2em;
+  font-size: 1em;
 }
 
 .display-block {
@@ -54,6 +66,6 @@
 }
 
 .display-none {
-  transform:translate(666px);
+  transform:translate(6666px);
   opacity: 0;
 }
