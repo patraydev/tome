@@ -7,7 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-DatabaseCleaner.clean_with(:truncation)
+# DatabaseCleaner.clean_with(:truncation)
+Program.destroy_all
+User.destroy_all
+Cocktail.destroy_all
+
 
 #make some programs
 @betty = Program.create!(name: 'The Betty', location: 'Chicago', sharing_enabled: false)
