@@ -32,6 +32,7 @@ function CocktailContainer(props) {
   const newCocktail = async (formData) => {
     const newCocktail = await createCocktail(formData);
     setCocktails((prevState) => [...prevState, newCocktail]);
+    setToggleFetch((t) => !t);
     history.push("/cocktails");
   };
 
@@ -60,7 +61,7 @@ function CocktailContainer(props) {
           <NewCocktail
             currentUser={currentUser}
             cocktails={cocktails}
-            newCocktail={newCocktail}
+            createCocktail={newCocktail}
           />
         </Route>
       </Switch>

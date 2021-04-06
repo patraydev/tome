@@ -16,6 +16,8 @@ class CocktailsController < ApplicationController
   # POST /cocktails
   def create
     @cocktail = Cocktail.new(cocktail_params)
+    @guest = Program.find_by_name('Guest')
+    @cocktail.program_id = @guest.id if @cocktail.program_id == nil
 
     if @cocktail.save
       render json: @cocktail, status: :created, location: @cocktail
@@ -46,6 +48,6 @@ class CocktailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cocktail_params
-      params.require(:cocktail).permit(:name, :creator, :ingredients, :bottom, :rinse, :glass, :ice, :method, :description, :pending, :request_type)
+      params.require(:cocktail).permit(:name, :creator, :ingredients, :bottom, :rinse, :glass, :ice, :float, :top, :garnish, :method, :program, :description, :pending, :request_type)
     end
 end

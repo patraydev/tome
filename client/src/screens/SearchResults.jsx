@@ -93,13 +93,13 @@ function SearchResults({
         )}
       </div>
       <div className="detail-button-container">
+            <Link to={'/cocktails/new'}>
+              <button onClick={hideModal}>Create</button>
+              </Link>
         {displayCocktail ? (
           <>
             <Link to={`/cocktails/edit/${displayCocktail.id}`}>
               <button onClick={hideModal}>Edit</button>
-            </Link>
-            <Link to={'/cocktails/new'}>
-              <button onClick={hideModal}>Create</button>
             </Link>
             <Link to={"/cocktails"}>
               <button onClick={handleDelete}>Delete</button>
