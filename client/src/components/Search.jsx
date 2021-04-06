@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import SearchResults from "../screens/SearchResults.jsx";
 import Modal from "./Modal.jsx";
 
 import "../assets/style/Search.css";
 
-function Search({ cocktails }) {
+function Search({ cocktails, setCocktails }) {
   const [show, setShow] = useState(false);
-
   const [formData, setFormData] = useState({ searchTerm: "" });
   const { searchTerm } = formData;
+  const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,13 +28,21 @@ function Search({ cocktails }) {
     setShow(false);
   };
 
+  const hideModalAndRedirect = () => {
+    setShow(false);
+    history.push('/cocktails');
+  };
+
+
   return (
     <div className="search-main">
-      <Modal show={show} handleClose={hideModal} size="large">
+      <Modal show={show} handleClose={hideModalAndRedirect} size="large">
         <SearchResults
           searchTerm={formData.searchTerm}
           cocktails={cocktails}
           title="Search Results"
+          hideModal={hideModal}
+          setCocktails={setCocktails}
         />
       </Modal>
       <form

@@ -16,12 +16,16 @@ export default function MrsNavbar(props) {
       </div>
       {currentUser ?
         <div className='nav-links'>
-          <Link to='/cocktails'>
+          {/* <Link to='/cocktails'>
             <div className='nav-item'>Admin</div>
             </Link>
           <Link to='/cocktails'>
             <div className='nav-item'>Library</div>
-            </Link>
+            </Link> */}
+          
+            <Link to='/'>
+              <div className='nav-item' onClick={handleLogout}>Log Out</div>
+            </Link> 
           <Link to='/cocktails'>
             <img className='nav-icon' src={icon} alt='user icon' />
             </Link>
