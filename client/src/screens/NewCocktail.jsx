@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 
 import Modal from "../components/Modal";
 
 import "../assets/style/EditCocktail.css";
 
-function NewCocktail({ newCocktail }) {
+function NewCocktail() {
   const [show, setShow] = useState(true);
-  const [displayCocktail, setDisplayCocktail] = useState({
+  const [newCocktail, setNewCocktail] = useState({
     name: "",
     creator: "",
     ingredients: "",
@@ -21,7 +21,6 @@ function NewCocktail({ newCocktail }) {
     method: "",
     description: "",
   });
-  const { id } = useParams();
 
   useEffect(() => {
     setShow(true);
@@ -31,7 +30,7 @@ function NewCocktail({ newCocktail }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDisplayCocktail((prevState) => ({
+    setNewCocktail((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -39,7 +38,7 @@ function NewCocktail({ newCocktail }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    newCocktail(displayCocktail);
+    newCocktail(newCocktail);
   };
 
   const showModal = () => {
@@ -52,8 +51,6 @@ function NewCocktail({ newCocktail }) {
 
   return (
     <Modal size="medium" show={show} handleClose={hideModal}>
-      <>
-        {displayCocktail ? (
           <div className="edit-container">
             <form className="edit-form" onSubmit={handleSubmit}>
               <div className="input">
@@ -61,7 +58,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="name"
                   type="text"
-                  value={displayCocktail.name}
+                  value={newCocktail.name}
                   onChange={handleChange}
                 />
               </div>
@@ -70,7 +67,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="creator"
                   type="text"
-                  value={displayCocktail.creator}
+                  value={newCocktail.creator}
                   onChange={handleChange}
                 />
               </div>
@@ -78,7 +75,7 @@ function NewCocktail({ newCocktail }) {
               <textarea
                 name="ingredients"
                 type="text"
-                value={displayCocktail.ingredients}
+                value={newCocktail.ingredients}
                 onChange={handleChange}
               />
               <div className="input">
@@ -86,7 +83,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="bottom"
                   type="text"
-                  value={displayCocktail.bottom}
+                  value={newCocktail.bottom}
                   onChange={handleChange}
                 />
               </div>
@@ -95,7 +92,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="rinse"
                   type="text"
-                  value={displayCocktail.rinse}
+                  value={newCocktail.rinse}
                   onChange={handleChange}
                 />
               </div>
@@ -104,7 +101,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="float"
                   type="text"
-                  value={displayCocktail.float}
+                  value={newCocktail.float}
                   onChange={handleChange}
                 />
               </div>
@@ -113,7 +110,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="top"
                   type="text"
-                  value={displayCocktail.top}
+                  value={newCocktail.top}
                   onChange={handleChange}
                 />
               </div>
@@ -122,7 +119,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="glass"
                   type="text"
-                  value={displayCocktail.glass}
+                  value={newCocktail.glass}
                   onChange={handleChange}
                 />
               </div>
@@ -131,7 +128,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="ice"
                   type="text"
-                  value={displayCocktail.ice}
+                  value={newCocktail.ice}
                   onChange={handleChange}
                 />
               </div>
@@ -140,7 +137,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="garnish"
                   type="text"
-                  value={displayCocktail.garnish}
+                  value={newCocktail.garnish}
                   onChange={handleChange}
                 />
               </div>
@@ -149,7 +146,7 @@ function NewCocktail({ newCocktail }) {
                 <input
                   name="method"
                   type="text"
-                  value={displayCocktail.method}
+                  value={newCocktail.method}
                   onChange={handleChange}
                 />
               </div>
@@ -157,21 +154,12 @@ function NewCocktail({ newCocktail }) {
               <textarea
                 name="description"
                 type="text"
-                value={displayCocktail.description}
+                value={newCocktail.description}
                 onChange={handleChange}
               />
-              <button type="submit">Save Changes</button>
+              <button type="submit">Submit!</button>
             </form>
           </div>
-        ) : (
-          <>
-            'ᕋᐃᔭᓐ ᕙᓛᓇᒐᓐ ᐅᓪᓗᒥ ᐃᓕᖅᑯᓯᕆᖕᒪᒍ, ᓴᓇᔨᓪᓚᕆᐊᓗᒃ ᓂᕆᑎᑦᑎᔪᓐᓇᖅᑐᖅ ᐅᑕᖅᑭᔪᓂᒃ ᑲᑎᙵᔪᓂᒃ
-            ᐱᐅᔪᒻᒪᕆᐊᓗᖕᒥᒃ ᒪᕐᕋᕐᒥᒃ, ᐊᒻᒪ ᐊᑕᐅᑦᑎᒃᑯᑦ ᓴᖅᑭᑎᑦᑎᓪᓗᓂ ᑕᐅᑐᖅᑰᖅᑕᒥᓂᒃ ᓄᓇᕐᔪᐊᕐᒥ.
-            ᖃᓄᐃᒻᒪᑦ ᐃᖅᑲᓇᐃᔭᙱᓚᖅ, ᓱᕋᒃᓯᒪᕙ ᐃᓄᑑᓪᓗᓂᓗ? ᐳᕋᐃᔭᓐ ᑎᓯᔪᖅ ᒫᑕᓐ ᐊᓐᓄᕌᓕᐊᕆᓪᓗᓂᐅᒃ
-            ᑲᓇᖕᓇᖅᐸᓯᖕᒥᐅᑕᖅ'
-          </>
-        )}
-      </>
     </Modal>
   );
 }

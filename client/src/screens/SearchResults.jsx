@@ -45,7 +45,6 @@ function SearchResults({
 
   const handleDelete = async () => {
     const id = displayCocktail.id;
-    console.log(id);
     await destroyCocktail(id);
     setCocktails((prevState) =>
       prevState.filter((cocktail) => {
@@ -99,7 +98,7 @@ function SearchResults({
             <Link to={`/cocktails/edit/${displayCocktail.id}`}>
               <button onClick={hideModal}>Edit</button>
             </Link>
-            <Link to={`/cocktails/edit/${displayCocktail.id}`}>
+            <Link to={'/cocktails/new'}>
               <button onClick={hideModal}>Create</button>
             </Link>
             <Link to={"/cocktails"}>

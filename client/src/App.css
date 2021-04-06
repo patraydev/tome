@@ -25,6 +25,7 @@ button{
   color: #fadde1;
   padding: 18px 48px;
   align-items: center;
+  text-align: center;
   outline: none;
 }
 
@@ -38,6 +39,10 @@ input, textarea {
   border-left-style: hidden;
   border-bottom-style: hidden;
   font-family: 'Ilisarniq';
+}
+
+textarea{
+  resize: none;
 }
 
 input:focus, textarea:focus, select:focus {

@@ -4,7 +4,7 @@ import { Link, Route, Switch, useHistory } from "react-router-dom";
 import Modal from "../components/Modal.jsx";
 import Search from "../components/Search.jsx";
 import EditCocktail from "../screens/EditCocktail.jsx";
-import NewCocktail from '../screens/NewCocktail.jsx';
+import NewCocktail from "../screens/NewCocktail.jsx";
 
 import {
   readAllCocktails,
@@ -41,10 +41,13 @@ function CocktailContainer(props) {
     history.push("/cocktails");
   };
 
-
   return (
     <>
-      <Search cocktails={cocktails} currentUser={currentUser} setCocktails={setCocktails}/>
+      <Search
+        cocktails={cocktails}
+        currentUser={currentUser}
+        setCocktails={setCocktails}
+      />
       <Switch>
         <Route path="/cocktails/edit/:id">
           <EditCocktail
@@ -53,13 +56,12 @@ function CocktailContainer(props) {
             editCocktail={editCocktail}
           />
         </Route>
-        <Route
-          path="/new"
-          currentUser={currentUser}
-          cocktails={cocktails}
-          newCocktail={newCocktail}
-        >
-          <NewCocktail />
+        <Route path="/cocktails/new">
+          <NewCocktail
+            currentUser={currentUser}
+            cocktails={cocktails}
+            newCocktail={newCocktail}
+          />
         </Route>
       </Switch>
     </>
