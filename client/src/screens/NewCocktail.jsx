@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 
 import Modal from "../components/Modal";
 
 import "../assets/style/EditCocktail.css";
 
-function NewCocktail() {
+function NewCocktail({ createCocktail, currentUser }) {
+  const history = useHistory();
   const [show, setShow] = useState(true);
   const [newCocktail, setNewCocktail] = useState({
     name: "",
@@ -38,7 +40,9 @@ function NewCocktail() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    newCocktail(newCocktail);
+    console.log(newCocktail);
+    createCocktail(newCocktail);
+    history.push('/cocktails');
   };
 
   const showModal = () => {
