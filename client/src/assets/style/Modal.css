@@ -5,6 +5,7 @@
   width:100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 666;
 }
 
 .modal-main {
@@ -48,6 +49,9 @@
   right: 0;
   top: 0;
   margin: 5px;
+  padding: 15px 25px;
+  display: flex;
+justify-content: center;
 }
 
 .small .close-button{
