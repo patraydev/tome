@@ -1,0 +1,50 @@
+.cocktail-detail{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+}
+
+.name-detail{
+  display:flex;
+  flex-flow: row nowrap;
+  padding: 5px;
+}
+
+.name{
+  font-size: 3em;
+  text-decoration: underline;
+}
+
+.creator{
+  font-size: 1.3em;
+  align-self: flex-end;
+}
+
+.ingredients{
+  margin-left: 10px;
+  margin-top: 25px;
+  font-size: 1.5em;
+}
+
+.bottom {
+  margin-left: 10px;
+  margin-top: 25px;
+  font-size: 1.5em;
+}
+
+.method,
+.garnish,
+.ice,
+.glass,
+.float,
+.rinse{
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 1.5em;
+}
+
+.description {
+  margin-left: 10px;
+  margin-top: 25px;
+  font-size: 1.5em;
+}

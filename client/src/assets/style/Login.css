@@ -1,0 +1,37 @@
+.auth-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-container form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.auth-container input {
+  /* font-size: 48px; */
+  font-family: 'Ilisarniq';
+  border: 3px solid #fadde1;
+  background-color: #3c3c3c;
+  border-radius: 25px;
+  margin: 40px 100px 0px 100px;
+  color: #fadde1;
+  padding: 18px 48px;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+
+
+.button-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 130px;
+}
+
+.button-container button {
+  margin: 25px 5px 0 5px;
+  border: 3px solid #fadde1;
+}
