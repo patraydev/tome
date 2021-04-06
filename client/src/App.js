@@ -52,14 +52,11 @@ function App() {
     <div className="App">
       <Layout currentUser={currentUser} handleLogout={handleLogout}>
         <Switch>
-          <Route path="/register">
-            <Register handleRegister={handleRegister} />
-          </Route>
           <Route path="/cocktails">
             <CocktailContainer currentUser={currentUser} />
           </Route>
           <Route path="/">
-            <Dashboard handleLogin={handleLogin}/>
+            <Dashboard handleLogin={handleLogin} handleRegister={handleRegister}/>
           </Route>
         </Switch>
       </Layout>
