@@ -37,10 +37,12 @@
   flex-direction: row;
   margin-left: 10px;
   width: 95%;
+  border-bottom: 1px solid #fadde1;
 }
 
 .edit-form>label{
   margin-left: 10px;
+  text-decoration: underline;
 }
 
 .edit-container button{
@@ -51,3 +53,5 @@
   right: 0;
   bottom: 0;
 }
+
+
