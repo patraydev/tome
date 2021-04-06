@@ -8,20 +8,20 @@
 }
 
 .dashboard-main>button{
-  margin-top: 2em;
-  z-index: 2;
+  margin-top: 3em;
+z-index: 1;
 }
 
 .dashboard-main .weird-circle{
   max-width: 55vw;
   max-height: 85vh;
-  margin-top: -12em;
+  margin-top: -11em;
   margin-right: 2em;
   position: absolute;
   justify-self: center;
-  z-index: 0;
   animation: rotation 666s infinite linear;
   overflow:hidden;
+  z-index: 0;
 }
 
 @keyframes rotation {

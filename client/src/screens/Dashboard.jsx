@@ -24,11 +24,11 @@ function Dashboard(props) {
 
   return (
     <div className="dashboard-main">
-      <img src={circle} className='weird-circle' alt='weird spinny circle' />
       <Modal show={show} handleClose={hideModal} size='small'>
         <Login handleLogin={handleLogin} />
       </Modal>
       <button onClick={showModal}>login</button>
+      <img src={circle} className='weird-circle' alt='weird spinny circle' />
     </div>
   );
 }
