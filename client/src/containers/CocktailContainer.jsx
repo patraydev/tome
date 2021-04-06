@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 
-import Modal from "../components/Modal.jsx";
 import Search from "../components/Search.jsx";
 import EditCocktail from "../screens/EditCocktail.jsx";
 import NewCocktail from "../screens/NewCocktail.jsx";
 
-import circle from '../assets/images/circle.png';
+import circle from '../assets/images/ward.png';
 
 import {
   readAllCocktails,

@@ -32,7 +32,7 @@ function EditCocktail({ cocktails, editCocktail }) {
     setDisplayCocktail(
       cocktails.find((cocktail) => cocktail.id === parseInt(id))
     );
-  }, [cocktails]);
+  }, [cocktails, id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,10 +45,6 @@ function EditCocktail({ cocktails, editCocktail }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     editCocktail(id,displayCocktail);
-  };
-
-  const showModal = () => {
-    setShow(true);
   };
 
   const hideModal = () => {

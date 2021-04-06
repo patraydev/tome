@@ -1,10 +1,6 @@
-import { useState, useEffect } from "react";
-
 import "../assets/style/DisplayCocktail.css";
 
 function DisplayCocktail({ displayType, displayCocktail }) {
-  const [] = useState();
-  useEffect(() => {}, []);
 
   return (
     <div className="cocktail-detail">
@@ -16,21 +12,21 @@ function DisplayCocktail({ displayType, displayCocktail }) {
       </div>
       <div className="ingredients">{displayCocktail.ingredients}</div>
       <div className="bottom">
-        {displayCocktail.bottom ? `bottom: ${displayCocktail.bottom}` : null}
+        {displayCocktail.bottom ? `bottom:     ${displayCocktail.bottom}` : null}
       </div>
       <div className="rinse">
-        {displayCocktail.rinse ? `rinse: ${displayCocktail.rinse}` : null}
+        {displayCocktail.rinse ? `rinse:     ${displayCocktail.rinse}` : null}
       </div>
       <div className="float">
-        {displayCocktail.float ? ` ${displayCocktail.float}` : null}
+        {displayCocktail.float ? `float:     ${displayCocktail.float}` : null}
       </div>
       <div className="top">
-        {displayCocktail.top ? `top: ${displayCocktail.top}` : null}
+        {displayCocktail.top ? `top:     ${displayCocktail.top}` : null}
       </div>
-      <div className="glass">{displayCocktail.glass ?`glass: ${displayCocktail.glass}`: null}</div>
-      <div className="ice">{displayCocktail.ice ?`ice: ${displayCocktail.ice}`: null}</div>
-      <div className="garnish">{displayCocktail.garnish ?`garnish: ${displayCocktail.garnish}`: null}</div>
-      <div className="method">{displayCocktail.method ?`method: ${displayCocktail.method}`: null}</div>
+      <div className="glass">{displayCocktail.glass ?`glass:     ${displayCocktail.glass}`: null}</div>
+      <div className="ice">{displayCocktail.ice ?`ice:     ${displayCocktail.ice}`: null}</div>
+      <div className="garnish">{displayCocktail.garnish ?`garnish:     ${displayCocktail.garnish}`: null}</div>
+      <div className="method">{displayCocktail.method ?`method:     ${displayCocktail.method}`: null}</div>
       <div className="description">
         {displayCocktail.description ? displayCocktail.description : null}
       </div>
