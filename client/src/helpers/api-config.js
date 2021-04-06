@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000'
+const baseUrl = 'tome-api.herokuapp.com' 
 
 const api = axios.create({
   baseURL: baseUrl,
