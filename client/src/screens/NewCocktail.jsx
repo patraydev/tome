@@ -44,11 +44,7 @@ function NewCocktail({ createCocktail, currentUser }) {
     createCocktail(newCocktail);
     history.push('/cocktails');
   };
-
-  const showModal = () => {
-    setShow(true);
-  };
-
+  
   const hideModal = () => {
     setShow(false);
   };

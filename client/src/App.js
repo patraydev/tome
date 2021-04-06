@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 
 import Dashboard from './screens/Dashboard.jsx';
 import Layout from "./layout/Layout.jsx";
-import Login from "./screens/Login.jsx";
-import Register from "./screens/Register.jsx";
 import CocktailContainer from "./containers/CocktailContainer.jsx";
 
 import {

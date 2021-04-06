@@ -15,7 +15,6 @@ function SearchResults({
   setCocktails,
 }) {
   const [filteredCocktails, setFilteredCocktails] = useState([]);
-  const [displayType, setDisplayType] = useState("display");
   const [displayCocktail, setDisplayCocktail] = useState({});
   const history = useHistory();
 
@@ -34,7 +33,7 @@ function SearchResults({
         cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
       );
     }
-  }, [cocktails]);
+  }, [cocktails,displayCocktail]);
 
   const handleSelect = (e) => {
     e.preventDefault();
@@ -80,7 +79,7 @@ function SearchResults({
       <div className="display">
         {displayCocktail ? (
           <DisplayCocktail
-            displayType={displayType}
+            displayType='display'
             displayCocktail={displayCocktail}
           />
         ) : (

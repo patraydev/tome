@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import "../assets/style/Login.css";
 
@@ -8,8 +7,8 @@ export default function Login(props) {
     email: "",
     password: "",
   });
-  const { username, password } = formData;
-  const { handleLogin } = props;
+  const { email, password } = formData;
+  const { handleLogin,hideModal,showModalRegister } = props;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,6 +17,12 @@ export default function Login(props) {
       [name]: value,
     }));
   };
+
+  const handleRegRedirect = () => {
+    hideModal();
+    showModalRegister();
+}
+
 
   return (
     <div className="auth-container">
@@ -33,7 +38,7 @@ export default function Login(props) {
           name="email"
           type="text"
           placeholder="email"
-          value={username}
+          value={email}
           onChange={handleChange}
         />
 
@@ -48,9 +53,7 @@ export default function Login(props) {
 
         <div className="button-container">
           <button type="submit">Login</button>
-          <Link to="/register">
-            <button>Register</button>
-          </Link>
+          <button onClick={handleRegRedirect}>Register</button>
         </div>
       </form>
     </div>
