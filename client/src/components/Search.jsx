@@ -56,6 +56,7 @@ function Search({ cocktails, setCocktails }) {
         <input
           name="searchTerm"
           type="text"
+          autocomplete="off"
           value={searchTerm}
           onChange={handleChange}
           autoFocus

@@ -6,6 +6,8 @@ import Search from "../components/Search.jsx";
 import EditCocktail from "../screens/EditCocktail.jsx";
 import NewCocktail from "../screens/NewCocktail.jsx";
 
+import circle from '../assets/images/circle.png';
+
 import {
   readAllCocktails,
   createCocktail,
@@ -43,12 +45,15 @@ function CocktailContainer(props) {
   };
 
   return (
-    <>
+    <div className='cocktail-container'> 
+      <img src={circle} className='weird-circle' alt='weird spinny circle' />
+      <div className='search-bar-box'>
       <Search
         cocktails={cocktails}
         currentUser={currentUser}
         setCocktails={setCocktails}
-      />
+        />
+        </div>
       <Switch>
         <Route path="/cocktails/edit/:id">
           <EditCocktail
@@ -65,7 +70,7 @@ function CocktailContainer(props) {
           />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }
 
