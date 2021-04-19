@@ -27,23 +27,23 @@ function SearchResults({
     setFilteredCocktails(filtered);
   }, [cocktails, searchTerm]);
 
-  useEffect(() => {
-    if (displayCocktail) {
-      setDisplayCocktail(
-        cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
-      );
-    }
-  }, [cocktails,displayCocktail]);
+  // useEffect(() => {
+  //   if (displayCocktail) {
+  //     setDisplayCocktail(
+  //       cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
+  //     );
+  //   }
+  // }, [cocktails,displayCocktail]);
 
   const handleSelect = (e) => {
     e.preventDefault();
     setDisplayCocktail(
-      cocktails.find((cocktail) => cocktail.id === parseInt(e.target.id))
+      cocktails.find((cocktail) => cocktail.name === e.target.innerHTML.toString())
     );
   };
 
   const handleDelete = async () => {
-    const id = displayCocktail.id;
+    const id = displayCocktail._id;
     await destroyCocktail(id);
     setCocktails((prevState) =>
       prevState.filter((cocktail) => {
@@ -67,6 +67,7 @@ function SearchResults({
         key={index}
         id={cocktail.id}
         onClick={(e) => handleSelect(e)}
+        // onClick={(e) => console.log(e.target.innerHTML)}
       >
         {cocktail ? cocktail.name : "nothing found"}
       </div>
@@ -97,7 +98,7 @@ function SearchResults({
               </Link>
         {displayCocktail ? (
           <>
-            <Link to={`/cocktails/edit/${displayCocktail.id}`}>
+            <Link to={`/cocktails/edit/${displayCocktail._id}`}>
               <button onClick={hideModal}>Edit</button>
             </Link>
             <Link to={"/cocktails"}>

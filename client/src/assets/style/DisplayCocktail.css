@@ -1,7 +1,12 @@
 .cocktail-detail{
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-items: flex-start;
+}
+
+.detail{
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .name-detail{

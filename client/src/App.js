@@ -2,7 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Dashboard from './screens/Dashboard.jsx';
+import Dashboard from './containers/Dashboard.jsx';
 import Layout from "./layout/Layout.jsx";
 import CocktailContainer from "./containers/CocktailContainer.jsx";
 
@@ -28,7 +28,6 @@ function App() {
     }, []);
 
   const handleLogin = async (formData) => {
-    console.log(formData);
     const currentUser = await loginUser(formData);
     setCurrentUser(currentUser);
     history.push("/cocktails");
