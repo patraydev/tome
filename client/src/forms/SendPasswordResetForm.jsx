@@ -1,8 +1,10 @@
 // import "../assets/style/PasswordResetForm.css";
+import { useState } from 'react';
 
 import {sendPasswordReset} from "../helpers/reset.js";
 
 export default function SendPasswordResetForm(props) {
+  const [sentMessage, setSentMessage] = useState("");
 
   const {
     hideModal,
@@ -23,6 +25,7 @@ export default function SendPasswordResetForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateSubmit()) sendPasswordReset(values);
+    setSentMessage("Success! If email is registered, a reset link has been sent");
   }
 
 
@@ -44,9 +47,10 @@ export default function SendPasswordResetForm(props) {
           {touched.email && errors.email}
         </label>
         <div className="button-container">
+        <span>{sentMessage}</span>
           <button type="submit">send reset link</button>
-        </div>
           <div className='links'><span className='link' onClick={handleRegisterRedirect}>don't have an account?</span></div>
+        </div>
       </form>
     </div>
   );
