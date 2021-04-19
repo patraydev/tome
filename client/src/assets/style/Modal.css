@@ -73,3 +73,10 @@ justify-content: center;
   transform:translate(6666px);
   opacity: 0;
 }
+
+@media screen and (min-width: 1024px) {
+  .small{
+    width: 60vw;
+    height: 70vh;
+  }
+}

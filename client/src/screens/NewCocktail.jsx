@@ -40,7 +40,6 @@ function NewCocktail({ createCocktail, currentUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newCocktail);
     createCocktail(newCocktail);
     history.push('/cocktails');
   };

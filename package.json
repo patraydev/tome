@@ -1,0 +1,36 @@
+{
+  "name": "tome",
+  "version": "1.0.0",
+  "description": "_**The Tome** is a searchable, community-driven cocktail database. Optimized to run on a restaurant POS tablet, this app will allow users to view a complete collection of cocktail recipes from their bar program, build their own library of recipes, and submit new cocktails as well as giving beverage directors and owners the option of sharing their recipes into the cloud in exchange for access to the recipes of other programs that have enabled sharing._",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patraydev/tome.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patraydev/tome/issues"
+  },
+  "homepage": "https://github.com/patraydev/tome#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.3",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.5.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

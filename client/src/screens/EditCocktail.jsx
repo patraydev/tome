@@ -25,12 +25,12 @@ function EditCocktail({ cocktails, editCocktail }) {
 
   useEffect(() => {
     setShow(true);
-  },[])
+  },[show])
 
 
   useEffect(() => {
     setDisplayCocktail(
-      cocktails.find((cocktail) => cocktail.id === parseInt(id))
+      cocktails.find((cocktail) => cocktail._id === id)
     );
   }, [cocktails, id]);
 
