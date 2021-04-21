@@ -4,6 +4,7 @@ const cocktailControllers = require('../controllers/cocktails.js');
 const resetControllers = require('../controllers/reset.js');
 const verifyControllers = require('../controllers/verify.js');
 const authControllers = require('../controllers/auth.js');
+const libraryControllers = require('../controllers/library.js');
 
 
 const router = Router();
@@ -23,6 +24,9 @@ router.post('/reset', resetControllers.sendReset);
 router.post('/reset-confirm/:token', resetControllers.confirmReset);
 
 router.get('/verify-confirm/:token', verifyControllers.verifyUser);
+
+router.post('/library', libraryControllers.getLibrary);
+router.post('/library/add', libraryControllers.addToLibrary);
 
 
 module.exports = router

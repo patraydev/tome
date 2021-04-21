@@ -23,8 +23,8 @@ export default function LoginForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateSubmit()) handleLogin(values);
-    setSubmitError("Incorrect login credentials. Please try again");
+    if (validateSubmit()) handleLogin(values).then(
+    setSubmitError("Incorrect login credentials. Please try again"));
   }
 
 

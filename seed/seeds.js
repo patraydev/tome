@@ -110,8 +110,6 @@ const main = async () => {
   await User.deleteMany({});
   await User.create(users);
   console.log(`Created ${users.length} users!`);
-  const a = await User.findOne({});
-  console.log(a);
 
   const bettyPeeps = await (await User.find({ program: [betty._id] }).exec()).map(user=>user._id);
   const ankerPeeps = await (await User.find({ program: [anker._id] }).exec()).map(user => user._id);
@@ -459,6 +457,12 @@ console.log('Added users to their rightful programs!');
   await Cocktail.deleteMany({});
   await Cocktail.insertMany(cocktails);
   console.log(`Created ${cocktails.length} cocktails!`);
+  
+  const bettyCocktails = await (await Cocktail.find({ program: [betty._id] }).exec()).map(cocktail => cocktail._id);
+  const vestinos = await User.findOne({ name: 'Vestinos' });
+  vestinos.library = bettyCocktails;
+  await vestinos.save();
+  console.log('Added all Betty cocktails to Vestinos\' library');
 };
 
 const run = async () => {

@@ -1,25 +1,24 @@
 .cocktail-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+   height: 100vh;
+   width: 16vw;
 }
 
-.cocktail-container .weird-circle{
+.weird-circle{
   max-width: 66vw;
   max-height: 85vh;
-  position: absolute;
-  justify-self: center;
-  margin-top: -10em;
+  position: fixed;
   z-index: 0;
   animation: rotation 666s infinite linear;
   overflow:hidden;
 }
 
 .search-bar-box{
-  margin-top: 5em;
+  position:fixed;
   z-index: 1;
 }
 

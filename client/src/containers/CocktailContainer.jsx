@@ -4,6 +4,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import Search from "../components/Search.jsx";
 import EditCocktail from "../screens/EditCocktail.jsx";
 import NewCocktail from "../screens/NewCocktail.jsx";
+import Library from '../screens/Library.jsx';
 
 import circle from '../assets/images/ward.png';
 
@@ -67,6 +68,9 @@ function CocktailContainer(props) {
             cocktails={cocktails}
             createCocktail={newCocktail}
           />
+        </Route>
+        <Route path='/cocktails/library'>
+          <Library currentUser={currentUser}/>
         </Route>
       </Switch>
     </div>
