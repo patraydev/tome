@@ -1,24 +1,26 @@
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import "../assets/style/SearchResults.css";
+import List from '../components/List.jsx';
 import DisplayCocktail from "../components/DisplayCocktail";
 
 import { destroyCocktail } from "../helpers/cocktails.js";
+import { addToLibrary } from "../helpers/library.js";
+
+import "../assets/style/SearchResults.css";
 
 function SearchResults({
   searchTerm,
-  title,
   cocktails,
   currentUser,
   hideModal,
   setCocktails,
 }) {
   const [filteredCocktails, setFilteredCocktails] = useState([]);
-  const [displayCocktail, setDisplayCocktail] = useState({});
+  const [displayCocktail, setDisplayCocktail] = useState(false);
   const history = useHistory();
 
-  // const isAdmin = currentUser && currentUser.is_admin;
+  const isAdmin = currentUser && currentUser.is_admin;
 
   useEffect(() => {
     const filtered = cocktails.filter((cocktail) =>
@@ -35,13 +37,6 @@ function SearchResults({
   //   }
   // }, [cocktails,displayCocktail]);
 
-  const handleSelect = (e) => {
-    e.preventDefault();
-    setDisplayCocktail(
-      cocktails.find((cocktail) => cocktail.name === e.target.innerHTML.toString())
-    );
-  };
-
   const handleDelete = async () => {
     const id = displayCocktail._id;
     await destroyCocktail(id);
@@ -54,33 +49,28 @@ function SearchResults({
     hideModal();
   };
 
-  // const handleAdd = (e) => {
-  //   e.preventDefault();
-  // for assoc at a later date
-  // };
-
-  const list =
-    filteredCocktails &&
-    filteredCocktails.map((cocktail, index) => (
-      <div
-        className="list-item"
-        key={index}
-        id={cocktail.id}
-        onClick={(e) => handleSelect(e)}
-        // onClick={(e) => console.log(e.target.innerHTML)}
-      >
-        {cocktail ? cocktail.name : "nothing found"}
-      </div>
-    ));
+  const handleAdd = async () => {
+    const userID = currentUser._id;
+    const cocktailID = displayCocktail._id;
+    await addToLibrary({
+      userID: userID,
+      cocktailID: cocktailID
+    });
+  };
 
   return (
     <div className="results-container">
-      <div className="title">{`${title}`}</div>
-      <div className="results-list">{list}</div>
+      <div className="title">Search Results</div>
+      <div className="results-list">
+        <List
+          cocktails={filteredCocktails}
+          setDisplayCocktail={setDisplayCocktail}
+        />
+      </div>
       <div className="display">
         {displayCocktail ? (
           <DisplayCocktail
-            displayType='display'
+            displayType="display"
             displayCocktail={displayCocktail}
           />
         ) : (
@@ -93,10 +83,7 @@ function SearchResults({
         )}
       </div>
       <div className="detail-button-container">
-            <Link to={'/cocktails/new'}>
-              <button onClick={hideModal}>Create</button>
-              </Link>
-        {displayCocktail ? (
+        {displayCocktail && isAdmin ? (
           <>
             <Link to={`/cocktails/edit/${displayCocktail._id}`}>
               <button onClick={hideModal}>Edit</button>
@@ -106,8 +93,7 @@ function SearchResults({
             </Link>
           </>
         ) : null}
-        {/* this seems much easier to implement with mongoDB so let's wait */}
-        {/* <button onClick={handleAdd}>Add to Library</button> */}
+        <button onClick={handleAdd}>Add to Library</button>
       </div>
     </div>
   );

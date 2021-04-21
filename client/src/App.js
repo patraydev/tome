@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <Layout currentUser={currentUser} handleLogout={handleLogout}>
+      <Layout currentUser={currentUser}>
         <Switch>
           <Route path="/cocktails">
             <CocktailContainer currentUser={currentUser} />

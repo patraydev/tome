@@ -6,7 +6,7 @@ import tome from '../assets/images/tome.png';
 import '../assets/style/MrsNavbar.css';
 
 export default function MrsNavbar(props) {
-  const { currentUser, handleLogout } = props;
+  const { currentUser} = props;
   
   return (
     <header>
@@ -23,8 +23,8 @@ export default function MrsNavbar(props) {
             <div className='nav-item'>Library</div>
             </Link> */}
           
-            <Link to='/'>
-              <div className='nav-item' onClick={handleLogout}>Log Out</div>
+            <Link to='/cocktails/library'>
+              <div className='nav-item'>Library</div>
             </Link> 
           <Link to='/cocktails'>
             <img className='nav-icon' src={icon} alt='user icon' />
