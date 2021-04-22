@@ -27,6 +27,7 @@ router.get('/verify-confirm/:token', verifyControllers.verifyUser);
 
 router.post('/library', libraryControllers.getLibrary);
 router.post('/library/add', libraryControllers.addToLibrary);
+router.post('/library/remove', libraryControllers.removeFromLibrary);
 
 
 module.exports = router

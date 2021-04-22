@@ -41,7 +41,6 @@ function Search({ cocktails, setCocktails, currentUser }) {
           searchTerm={formData.searchTerm}
           cocktails={cocktails}
           hideModal={hideModal}
-          setCocktails={setCocktails}
           currentUser={currentUser}
         />
       </Modal>

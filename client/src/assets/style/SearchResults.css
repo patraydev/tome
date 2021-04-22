@@ -65,6 +65,20 @@
   overflow-y: scroll;
 }
 
+.user-card-container{
+  grid-column: 3;
+  grid-row: 3 / 4;
+  border: 3px solid #fadde1;
+  border-radius: 25px;
+  max-width: 90%;
+  margin: 10px 5px;
+  padding: 20px 5px;
+}
+
+.user-card-container img {
+  max-width: 10vw;
+}
+
 .detail-button-container{
   grid-column: 3;
   grid-row: 4 / 5;

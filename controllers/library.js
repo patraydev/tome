@@ -30,7 +30,21 @@ const addToLibrary = async (req, res) => {
   }
 };
 
+const removeFromLibrary = async (req, res) => {
+  try {
+    const { userID, cocktailID } = req.body;
+    const user = await User.findOne({ _id: userID });
+    index = user.library.indexOf(cocktailID);
+    user.library.splice(index, 1);
+    await user.save();
+    res.json(user);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 module.exports = {
   getLibrary,
   addToLibrary,
+  removeFromLibrary
 };

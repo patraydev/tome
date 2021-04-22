@@ -5,6 +5,7 @@ import Search from "../components/Search.jsx";
 import EditCocktail from "../screens/EditCocktail.jsx";
 import NewCocktail from "../screens/NewCocktail.jsx";
 import Library from '../screens/Library.jsx';
+import Admin from '../screens/Admin.jsx';
 
 import circle from '../assets/images/ward.png';
 
@@ -51,7 +52,6 @@ function CocktailContainer(props) {
       <Search
         cocktails={cocktails}
         currentUser={currentUser}
-        setCocktails={setCocktails}
         />
         </div>
       <Switch>
@@ -71,6 +71,9 @@ function CocktailContainer(props) {
         </Route>
         <Route path='/cocktails/library'>
           <Library currentUser={currentUser}/>
+        </Route>
+        <Route path='/cocktails/admin'>
+          <Admin currentUser={currentUser} cocktails={cocktails}/>
         </Route>
       </Switch>
     </div>
