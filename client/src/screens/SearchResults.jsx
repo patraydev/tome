@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import List from '../components/List.jsx';
 import DisplayCocktail from "../components/DisplayCocktail";
 
-import { destroyCocktail } from "../helpers/cocktails.js";
+// import { destroyCocktail } from "../helpers/cocktails.js";
 import { addToLibrary } from "../helpers/library.js";
 
 import "../assets/style/SearchResults.css";
@@ -14,11 +14,10 @@ function SearchResults({
   cocktails,
   currentUser,
   hideModal,
-  setCocktails,
 }) {
   const [filteredCocktails, setFilteredCocktails] = useState([]);
   const [displayCocktail, setDisplayCocktail] = useState(false);
-  const history = useHistory();
+  // const history = useHistory();
 
   const isAdmin = currentUser && currentUser.is_admin;
 
@@ -37,17 +36,17 @@ function SearchResults({
   //   }
   // }, [cocktails,displayCocktail]);
 
-  const handleDelete = async () => {
-    const id = displayCocktail._id;
-    await destroyCocktail(id);
-    setCocktails((prevState) =>
-      prevState.filter((cocktail) => {
-        return cocktail.id !== id;
-      })
-    );
-    history.push("/cocktails");
-    hideModal();
-  };
+  // const handleDelete = async () => {
+  //   const id = displayCocktail._id;
+  //   await destroyCocktail(id);
+  //   setCocktails((prevState) =>
+  //     prevState.filter((cocktail) => {
+  //       return cocktail.id !== id;
+  //     })
+  //   );
+  //   history.push("/cocktails");
+  //   hideModal();
+  // };
 
   const handleAdd = async () => {
     const userID = currentUser._id;
@@ -88,9 +87,9 @@ function SearchResults({
             <Link to={`/cocktails/edit/${displayCocktail._id}`}>
               <button onClick={hideModal}>Edit</button>
             </Link>
-            <Link to={"/cocktails"}>
+            {/* <Link to={"/cocktails"}>
               <button onClick={handleDelete}>Delete</button>
-            </Link>
+            </Link> */}
           </>
         ) : null}
         <button onClick={handleAdd}>Add to Library</button>

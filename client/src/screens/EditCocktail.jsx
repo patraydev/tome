@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import Modal from "../components/Modal";
 
 import "../assets/style/EditCocktail.css";
 
 function EditCocktail({ cocktails, editCocktail }) {
-  const [show, setShow] = useState(true);
+  const [showEdit, setShowEdit] = useState(true);
   const [displayCocktail, setDisplayCocktail] = useState({
     name: "",
     creator: "",
@@ -22,10 +22,11 @@ function EditCocktail({ cocktails, editCocktail }) {
     description: "",
   });
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
-    setShow(true);
-  },[show])
+    setShowEdit(true);
+  },[])
 
 
   useEffect(() => {
@@ -48,11 +49,12 @@ function EditCocktail({ cocktails, editCocktail }) {
   };
 
   const hideModal = () => {
-    setShow(false);
+    setShowEdit(false);
+    history.push('/cocktails');
   };
 
   return (
-    <Modal size="medium" show={show} handleClose={hideModal}>
+    <Modal size="medium" show={showEdit} handleClose={hideModal}>
       <>
         {displayCocktail ? (
           <div className="edit-container">
