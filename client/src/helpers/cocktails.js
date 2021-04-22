@@ -16,7 +16,7 @@ export const readOneCocktail = async (id) => {
 };
 
 export const updateCocktail = async (id, data) => {
-  const resp = await api.put(`/cocktails/${id}`, { cocktail: data });
+  const resp = await api.put(`/cocktails/${id}`, data);
   return resp.data;
 };
 
