@@ -50,7 +50,7 @@
   right: 0;
   top: 0;
   margin: 5px;
-  padding: 15px 25px;
+  padding: 15px 15px;
   display: flex;
 justify-content: center;
 }
@@ -62,17 +62,6 @@ justify-content: center;
 .medium .close-button{
   max-width: .2em;
   font-size: 1em;
-}
-
-.display-block {
-  transition: opacity .5s linear;  
-  transform:translate(0);
-  opacity: 1;
-}
-
-.display-none {
-  transform:translate(6666px);
-  opacity: 0;
 }
 
 @media screen and (min-width: 1024px) {

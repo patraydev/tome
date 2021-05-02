@@ -82,9 +82,6 @@
 .detail-button-container{
   grid-column: 3;
   grid-row: 4 / 5;
-  /* position: fixed;
-  right:0;
-  bottom:0; */
   display: flex;
   flex-direction: column;
 }

@@ -1,0 +1,8 @@
+.profile-edit-container form{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit-title{
+  font-size: 2em;
+}

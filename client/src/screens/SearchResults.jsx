@@ -28,13 +28,13 @@ function SearchResults({
     setFilteredCocktails(filtered);
   }, [cocktails, searchTerm]);
 
-  // useEffect(() => {
-  //   if (displayCocktail) {
-  //     setDisplayCocktail(
-  //       cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
-  //     );
-  //   }
-  // }, [cocktails,displayCocktail]);
+  useEffect(() => {
+    if (displayCocktail) {
+      setDisplayCocktail(
+        cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
+      );
+    }
+  }, [cocktails]);
 
   // const handleDelete = async () => {
   //   const id = displayCocktail._id;
