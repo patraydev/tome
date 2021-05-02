@@ -36,9 +36,9 @@ function Library({ currentUser }) {
     const cocktailID = displayCocktail._id;
     await removeFromLibrary({
       userID: userID,
-      cocktailID: cocktailID
+      cocktailID: cocktailID,
     });
-    setToggleFetch(t => !t);
+    setToggleFetch((t) => !t);
   };
 
   return (
@@ -64,8 +64,12 @@ function Library({ currentUser }) {
           )}
         </div>
         <div className="user-card-container">
-          <img className="user-icon" src={icon} alt="user icon" />
-          <div className='user-name'>{currentUser.username || currentUser.email}</div>
+          <Link to="/cocktails/profile">
+            <img className="user-icon" src={icon} alt="user icon" />
+            <div className="user-name">
+              {currentUser.username || currentUser.email}
+            </div>
+          </Link>
         </div>
         <div className="detail-button-container">
           <Link to={"/cocktails/new"}>

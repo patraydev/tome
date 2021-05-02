@@ -8,11 +8,13 @@ import RegisterForm from "../forms/RegisterForm.jsx";
 import SendPasswordResetForm from '../forms/SendPasswordResetForm.jsx';
 import ConfirmPasswordResetForm from '../forms/ConfirmPasswordResetForm.jsx';
 
-import "../assets/style/Dashboard.css";
+import { emailValidation, passwordValidation } from '../helpers/validation.js';
+
+import "../assets/style/AuthContainer.css";
 
 import circle from "../assets/images/ward.png";
 
-function Dashboard(props) {
+function AuthContainer(props) {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [showPasswordReset, setShowPasswordReset] = useState(false);
@@ -42,34 +44,13 @@ function Dashboard(props) {
     setShowPasswordReset(false);
   };
 
-  const passwordValidation = (name) => {
-    if (name.trim() === "") {
-      return "Please enter a password";
-    }
-    return null;
-  };
-
-  const emailValidation = (email) => {
-    if (
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
-      )
-    ) {
-      return null;
-    }
-    if (email.trim() === "") {
-      return "Email is required";
-    }
-    return "Please enter a valid email";
-  };
-
   const validate = {
     email: emailValidation,
     password: passwordValidation,
   };
 
   return (
-    <div className="dashboard-main">
+    <div className="auth-main">
       <Modal show={showLogin} handleClose={hideModalLogin} size="small">
         <Validator validate={validate}>
           <LoginForm
@@ -98,14 +79,12 @@ function Dashboard(props) {
           <ConfirmPasswordResetForm/>
         </Validator>
       </Route>
-      {/* <div className='center-attempt'> */}
       <button className="login-button" onClick={showModalLogin}>
         login
       </button>
-      {/* </div> */}
       <img src={circle} className="weird-circle" alt="weird spinny circle" />
     </div>
   );
 }
 
-export default Dashboard;
+export default AuthContainer;

@@ -5,6 +5,7 @@ const resetControllers = require('../controllers/reset.js');
 const verifyControllers = require('../controllers/verify.js');
 const authControllers = require('../controllers/auth.js');
 const libraryControllers = require('../controllers/library.js');
+const userControllers = require('../controllers/users.js');
 
 
 const router = Router();
@@ -28,6 +29,8 @@ router.get('/verify-confirm/:token', verifyControllers.verifyUser);
 router.post('/library', libraryControllers.getLibrary);
 router.post('/library/add', libraryControllers.addToLibrary);
 router.post('/library/remove', libraryControllers.removeFromLibrary);
+
+router.put('/users/:id', userControllers.updateUser);
 
 
 module.exports = router

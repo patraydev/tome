@@ -7,7 +7,8 @@ import '../assets/style/MrsNavbar.css';
 
 export default function MrsNavbar(props) {
   const { currentUser} = props;
-  
+
+
   return (
     <header>
       <div className='brand-box'>
@@ -16,17 +17,15 @@ export default function MrsNavbar(props) {
       </div>
       {currentUser ?
         <div className='nav-links'>
-          {/* <Link to='/cocktails'>
-            <div className='nav-item'>Admin</div>
+          {currentUser.is_admin ?
+            <Link to='/cocktails/admin'>
+              <div className='nav-item'>Admin</div>
             </Link>
-          <Link to='/cocktails'>
-            <div className='nav-item'>Library</div>
-            </Link> */}
-          
+            : null}
             <Link to='/cocktails/library'>
               <div className='nav-item'>Library</div>
             </Link> 
-          <Link to='/cocktails'>
+          <Link to='/cocktails/profile'>
             <img className='nav-icon' src={icon} alt='user icon' />
             </Link>
         </div>
