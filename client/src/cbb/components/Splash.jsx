@@ -9,7 +9,7 @@ function Splash(props) {
   const history = useHistory();
 
 useEffect(() => {
-setTimeout(()=>history.push('/home'),3000)
+setTimeout(()=>history.push('/cbb/home'),3000)
 },[]);
 
   return (

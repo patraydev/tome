@@ -15,7 +15,7 @@ useEffect(() => {
   return (
     <div>
   <Navbar bg="dark" variant='dark'>
-  <Navbar.Brand as={Link} to='/home'>
+  <Navbar.Brand as={Link} to='/cbb/home'>
       <img
         alt="super cool logo"
         src={logo}
@@ -28,13 +28,14 @@ useEffect(() => {
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="ml-auto">
       <NavDropdown title="Magic" id="basic-nav-dropdown">
-        <NavDropdown.Item as={Link} to='/beatuifier'>Beautify</NavDropdown.Item>
-        <NavDropdown.Item as={Link} to='/edit'>Edit</NavDropdown.Item>
+        <NavDropdown.Item as={Link} to='/cbb/beatuifier'>Beautify</NavDropdown.Item>
+        <NavDropdown.Item as={Link} to='/cbb/edit'>Edit</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item as={Link} to='/progress'>Progress Report</NavDropdown.Item>
+        <NavDropdown.Item as={Link} to='/cbb/progress'>Progress Report</NavDropdown.Item>
       </NavDropdown>
-            <Nav.Link as={Link } to='/about'>What fresh hell is this?</Nav.Link>
-      <Nav.Link as={Link } to='/contact'>Contact</Nav.Link>
+            <Nav.Link as={Link } to='/cbb/about'>What fresh hell is this?</Nav.Link>
+            <Nav.Link as={Link} to='/cbb/contact'>Contact</Nav.Link>
+            <Nav.Link as={Link } to='/'>Back to TOME</Nav.Link>
           </Nav>
           </Navbar.Collapse>
   </Navbar>
