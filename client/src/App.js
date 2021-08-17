@@ -74,8 +74,9 @@ function App() {
               handleLogout={handleLogout}
             />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <AuthContainer
+              currentUser={currentUser}
               handleLogin={handleLogin}
               handleRegister={handleRegister}
             />
