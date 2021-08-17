@@ -31,7 +31,9 @@ export const usernameValidation = (username) => {
   return null;
 };
 
-// export const colorwayValidation = (colorway) => {
+export const colorwayValidation = (colorway) => {
+  return null;
+};
 //   if (validateColor(colorway[0]) && validateColor(colorway[1])) {
 //     return null;
 //   }

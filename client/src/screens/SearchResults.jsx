@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import List from '../components/List.jsx';
 import DisplayCocktail from "../components/DisplayCocktail";
 
-// import { destroyCocktail } from "../helpers/cocktails.js";
 import { addToLibrary } from "../helpers/library.js";
 
 import "../assets/style/SearchResults.css";
@@ -17,7 +16,6 @@ function SearchResults({
 }) {
   const [filteredCocktails, setFilteredCocktails] = useState([]);
   const [displayCocktail, setDisplayCocktail] = useState(false);
-  // const history = useHistory();
 
   const isAdmin = currentUser && currentUser.is_admin;
 
@@ -34,7 +32,7 @@ function SearchResults({
         cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
       );
     }
-  }, [cocktails]);
+  }, [cocktails, displayCocktail]);
 
   // const handleDelete = async () => {
   //   const id = displayCocktail._id;
@@ -84,7 +82,7 @@ function SearchResults({
       <div className="detail-button-container">
         {displayCocktail && isAdmin ? (
           <>
-            <Link to={`/cocktails/edit/${displayCocktail._id}`}>
+            <Link to={`/dashboard/edit/${displayCocktail._id}`}>
               <button onClick={hideModal}>Edit</button>
             </Link>
             {/* <Link to={"/cocktails"}>

@@ -27,7 +27,7 @@ function Library({ currentUser }) {
 
   const hideModal = () => {
     setShow(false);
-    history.push("/cocktails");
+    history.push("/dashboard");
   };
 
   const handleRemove = async (e) => {
@@ -40,6 +40,12 @@ function Library({ currentUser }) {
     });
     setToggleFetch((t) => !t);
   };
+
+  const colorway = currentUser
+    ? {
+        color: currentUser.foregroundColor,
+      }
+    : {};
 
   return (
     <Modal show={show} handleClose={hideModal} size="large">
@@ -64,7 +70,7 @@ function Library({ currentUser }) {
           )}
         </div>
         <div className="user-card-container">
-          <Link to="/cocktails/profile">
+          <Link style={colorway} to="/dashboard/profile">
             <img className="user-icon" src={icon} alt="user icon" />
             <div className="user-name">
               {currentUser.username || currentUser.email}
@@ -72,15 +78,15 @@ function Library({ currentUser }) {
           </Link>
         </div>
         <div className="detail-button-container">
-          <Link to={"/cocktails/new"}>
+          <Link to={"/dashboard/new"}>
             <button onClick={hideModal}>Create</button>
           </Link>
           {displayCocktail ? (
             <>
-              <Link to={`/cocktails/edit/${displayCocktail._id}`}>
+              <Link to={`/dashboard/edit/${displayCocktail._id}`}>
                 <button onClick={hideModal}>Edit</button>
               </Link>
-              <Link to={"/cocktails"}>
+              <Link to={"/dashboard"}>
                 <button onClick={handleRemove}>Remove From Library</button>
               </Link>
             </>

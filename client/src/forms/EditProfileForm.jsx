@@ -3,7 +3,8 @@ import '../assets/style/EditProfileForm.css';
 export default function EditProfileForm(props) {
 
   const {
-    handleUpdateProfile,
+    currentUser,
+    handleUpdateUser,
     errors,
     handleBlur,
     handleChange,
@@ -13,7 +14,7 @@ export default function EditProfileForm(props) {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (validateSubmit()) handleUpdateProfile(values)
+      if (validateSubmit()) handleUpdateUser(currentUser._id,values)
     }
   
     return (
@@ -54,6 +55,7 @@ export default function EditProfileForm(props) {
             />
             {touched.password && errors.password}
           </label>
+          <button onClick={handleSubmit}>Save</button>
         </form>
       </div>
     );

@@ -12,9 +12,12 @@ const router = Router();
 
 router.get('/cocktails', cocktailControllers.getCocktails);
 router.get('/cocktails/:id', cocktailControllers.getCocktail);
+router.post('/cocktails/:id/request', cocktailControllers.newRequest);
 router.post('/cocktails', cocktailControllers.createCocktail);
 router.put('/cocktails/:id', cocktailControllers.updateCocktail);
 router.delete('/cocktails/:id', cocktailControllers.deleteCocktail);
+
+
 
 
 router.post('/sign-up', authControllers.signUp);

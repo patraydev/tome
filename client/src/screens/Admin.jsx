@@ -21,7 +21,7 @@ function Admin({ currentUser, cocktails }) {
 
   const hideModal = () => {
     setShow(false);
-    history.push("/cocktails");
+    history.push("/dashboard");
   };
 
   return (
