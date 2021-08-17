@@ -1,0 +1,23 @@
+
+
+.last-box,
+.thumbnail-container{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+}
+
+.menu-thumbnail {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  margin: 10px;
+  padding: 5px;
+}
+
+.menu-thumbnail:hover{
+  cursor: pointer;
+  box-shadow: 0px 0px 5px rgb(145, 155, 155);
+  transition: all .2s ease;
+}

@@ -1,0 +1,22 @@
+.splash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash > img {
+  max-width: 60vw;
+  max-height: 60vh;
+  animation: App-logo-spin infinite 20s linear;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
