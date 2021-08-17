@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Route } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Route, useHistory } from 'react-router-dom';
 
 import Modal from "../components/Modal.jsx";
 import Validator from "../components/Validator.jsx";
@@ -18,7 +18,14 @@ function AuthContainer(props) {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [showPasswordReset, setShowPasswordReset] = useState(false);
-  const { handleLogin, handleRegister} = props;
+  const { handleLogin, handleRegister } = props;
+  const history = useHistory();
+
+  useEffect(() => {
+    if (props.currentUser) {
+      history.push('/dashboard');
+    }
+  }, [props.currentUser]);
 
   const showModalLogin = () => {
     setShowLogin(true);
