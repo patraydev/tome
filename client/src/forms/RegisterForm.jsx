@@ -1,8 +1,6 @@
 export default function RegisterForm(props) {
   const {
     handleRegister,
-    hideModal,
-    showModalRegister,
     errors,
     handleBlur,
     handleChange,

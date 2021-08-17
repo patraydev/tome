@@ -30,7 +30,7 @@ function Search({ cocktails, setCocktails, currentUser }) {
 
   const hideModalAndRedirect = () => {
     setShow(false);
-    history.push('/cocktails');
+    history.push('/dashboard');
   };
 
 

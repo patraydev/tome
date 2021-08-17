@@ -24,3 +24,8 @@ export const destroyCocktail = async (id) => {
   const resp = await api.delete(`/cocktails/${id}`);
   return resp.data;
 };
+
+export const createRequest = async (id, data) => {
+  const resp = await api.post(`/cocktails/${id}/request`, data);
+  return resp.data;
+};

@@ -3,13 +3,16 @@ import { Link, useHistory } from "react-router-dom";
 
 import Modal from "../components/Modal.jsx";
 import EditProfileForm from "../forms/EditProfileForm.jsx";
-import Validator from '../components/Validator.jsx';
+import Validator from "../components/Validator.jsx";
 
-import { usernameValidation } from '../helpers/validation.js';
+import {
+  usernameValidation,
+  colorwayValidation,
+} from "../helpers/validation.js";
 
-import '../assets/style/Profile.css';
+import "../assets/style/Profile.css";
 
-function Profile(currentUser, handleUpdateUser, handleLogout) {
+function Profile({ currentUser, handleUpdateUser, handleLogout }) {
   const [show, setShow] = useState(true);
   const history = useHistory();
 
@@ -19,31 +22,34 @@ function Profile(currentUser, handleUpdateUser, handleLogout) {
 
   const hideModal = () => {
     setShow(false);
-    history.push("/cocktails");
+    history.push("/dashboard");
   };
 
   const validate = {
     username: usernameValidation,
-    // colorway: colorwayValidation,
+    foregroundColor: colorwayValidation,
+    backgroundColor: colorwayValidation,
   };
 
   return (
     <Modal show={show} handleClose={hideModal} size="large">
-      <div className='profile-container'>
-      {currentUser ? (
+      <div className="profile-container">
+        {currentUser ? (
           <Validator validate={validate}>
-            <EditProfileForm/>
-        </Validator>
-      ) : (
-        <div>loading...</div>
+            <EditProfileForm
+              currentUser={currentUser}
+              handleUpdateUser={handleUpdateUser}
+            />
+          </Validator>
+        ) : (
+          <div>loading...</div>
         )}
-        <div className='profile-button-container'>
-          <button>Save</button>
-      <Link to={"/"}>
-        <button onClick={handleLogout}>Logout</button>
+        <div className="profile-button-container">
+          <Link to={"/"}>
+            <button onClick={handleLogout}>Logout</button>
           </Link>
-          </div>
         </div>
+      </div>
     </Modal>
   );
 }

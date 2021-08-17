@@ -44,63 +44,63 @@ const main = async () => {
 
   const users = [
     {
-      name: "Vestinos",
+      username: "Vestinos",
       email: "vestinos@betty.com",
       password: "xxx666",
       is_admin: true,
       program: [betty._id],
     },
     {
-      name: "Jess",
+      username: "Jess",
       email: "jess@betty.com",
       password: "xxx666",
       is_admin: false,
       program: [betty._id],
     },
     {
-      name: "Brian",
+      username: "Brian",
       email: "brian@betty.com",
       password: "xxx666",
       is_admin: false,
       program: [betty._id],
     },
     {
-      name: "Justin",
+      username: "Justin",
       email: "justin@anker.com",
       password: "xxx666",
       is_admin: true,
       program: [anker._id],
     },
     {
-      name: "Meredith",
+      username: "Meredith",
       email: "meredith@anker.com",
       password: "xxx666",
       is_admin: false,
       program: [anker._id],
     },
     {
-      name: "Angela",
+      username: "Angela",
       email: "1ngela@anker.com",
       password: "xxx666",
       is_admin: false,
       program: [anker._id],
     },
     {
-      name: "Patrick",
+      username: "Patrick",
       email: "patrick@anker.com",
       password: "xxx666",
       is_admin: true,
       program: [vh._id],
     },
     {
-      name: "Evie",
+      username: "Evie",
       email: "evangeline@anker.com",
       password: "xxx666",
       is_admin: false,
       program: [vh._id],
     },
     {
-      name: "Zac",
+      username: "Zac",
       email: "zac@anker.com",
       password: "xxx666",
       is_admin: false,
@@ -459,7 +459,7 @@ console.log('Added users to their rightful programs!');
   console.log(`Created ${cocktails.length} cocktails!`);
   
   const bettyCocktails = await (await Cocktail.find({ program: [betty._id] }).exec()).map(cocktail => cocktail._id);
-  const vestinos = await User.findOne({ name: 'Vestinos' });
+  const vestinos = await User.findOne({ username: 'Vestinos' });
   vestinos.library = bettyCocktails;
   await vestinos.save();
   console.log('Added all Betty cocktails to Vestinos\' library');

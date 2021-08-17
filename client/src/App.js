@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import AuthContainer from "./containers/AuthContainer.jsx";
 import Layout from "./layout/Layout.jsx";
-import CocktailContainer from "./containers/CocktailContainer.jsx";
+import Dashboard from "./containers/Dashboard.jsx";
 
 import {
   loginUser,
@@ -31,19 +31,19 @@ function App() {
   const handleLogin = async (formData) => {
     const currentUser = await loginUser(formData);
     setCurrentUser(currentUser);
-    history.push("/cocktails");
+    history.push("/dashboard");
   };
 
   const handleRegister = async (formData) => {
     const currentUser = await registerUser(formData);
     setCurrentUser(currentUser);
-    history.push("/cocktails");
+    history.push("/dashboard");
   };
 
   const handleUpdateUser = async (formData) => {
     const currentUser = await updateUser(formData);
     setCurrentUser(currentUser);
-    history.push("/cocktails");
+    history.push("/dashboard");
   };
 
   const handleLogout = () => {
@@ -52,12 +52,19 @@ function App() {
     setCurrentUser(null);
   };
 
+  const colorway = currentUser
+    ? {
+        backgroundColor: currentUser.backgroundColor,
+        color: currentUser.foregroundColor,
+      }
+    : {};
+
   return (
-    <div className="App">
+    <div className="App" style={colorway}>
       <Layout currentUser={currentUser}>
         <Switch>
-          <Route path="/cocktails">
-            <CocktailContainer
+          <Route path="/dashboard">
+            <Dashboard
               currentUser={currentUser}
               handleUpdateUser={handleUpdateUser}
               handleLogout={handleLogout}

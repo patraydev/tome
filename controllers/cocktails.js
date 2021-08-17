@@ -19,7 +19,7 @@ const getCocktail = async (req, res) => {
     if (cocktail) {
       return res.json(cocktail);
     }
-    res.status(404).json({ message: "Cocktail not found!" });
+    res.status(400).json({ message: "Cocktail not found!" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -51,7 +51,7 @@ const deleteCocktail = async (req, res) => {
     const { id } = req.params;
     const deleted = await Cocktail.findByIdAndDelete(id);
     if (deleted) {
-      return res.status(200).send("Cocktail deleted");
+      return res.status(200).send("Cocktail deleted",deleted);
     }
     throw new Error("Cocktail not found");
   } catch (error) {
@@ -59,10 +59,35 @@ const deleteCocktail = async (req, res) => {
   }
 };
 
+const newRequest = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cocktail = await Cocktail.findById(id);
+    if (!cocktail) {
+      res.status(404).json({ message: "Cocktail not found!" });
+    }
+    else if (cocktail.has_pending) {
+      res.status(406).json({ message: "Cocktail already has pending changes - admin must approve or deny" });
+    }
+    else {
+      incomingRequest = req.body;
+      delete incomingRequest._id;
+      const newPendingCocktail = await new Cocktail(incomingRequest);
+      newPendingCocktail.is_pending = true;
+    await newPendingCocktail.save();
+    res.status(201).json(cocktail);
+    }
+  }
+  catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 module.exports = {
   getCocktails,
   getCocktail,
   updateCocktail,
+  newRequest,
   deleteCocktail,
   createCocktail,
 };
