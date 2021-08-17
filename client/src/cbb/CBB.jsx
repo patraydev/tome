@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './CBB.css';
+import './index.css';
+
 import './fonts/Ilisarniq-Light.otf'
 
 import { config } from "./services";
@@ -20,7 +21,7 @@ import Home from './components/Home.jsx';
 import Splash from './components/Splash.jsx';
 
 
-function App() {
+function CBB() {
   const [raw, setRaw] = useState([]);
   const [beautiful, setBeautiful] = useState([]);
   const [beautifulDict, setBeautifulDict] = useState([]);
@@ -63,26 +64,26 @@ function App() {
   }, [beautiful]);
   
   return (
-    <div className='App'>
+    <div className='CBB'>
       <MrNavbar />
       <Route render={({location})=> (
         <TransitionGroup>
           <CSSTransition key={location.key} timeout={500} classNames='fade'>
             <Switch location={location}>
 
-              <Route exact path='/' component={Splash}/>
-              <Route path='/home'>
+              <Route exact path='/cbb' component={Splash}/>
+              <Route path='/cbb/home'>
                   <Home tables={tables} setActiveTable={setActiveTable} record={record}/>
               </Route>
-              <Route path='/about' component={About}/>
-              <Route path='/contact' component={Contact}/>
-              <Route path='/progress'>
+              <Route path='/cbb/about' component={About}/>
+              <Route path='/cbb/contact' component={Contact}/>
+              <Route path='/cbb/progress'>
                 <Progress beautifulDict={beautifulDict} setRecord={setRecord}/>
               </Route>
-              <Route path='/edit'>
+              <Route path='/cbb/edit'>
                 <Edit record={record} beautifulDict={beautifulDict} setRecord={setRecord} setToggle={ setToggle}/>
               </Route>
-              <Route path='/beatuifier'>
+              <Route path='/cbb/beatuifier'>
                 <Beautifier raw={raw} table={activeTable} setToggle={setToggle} record={record}/>
               </Route>
             </Switch>
@@ -93,4 +94,4 @@ function App() {
   );
 }
 
-export default App;
+export default CBB;

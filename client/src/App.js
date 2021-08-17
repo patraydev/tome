@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import AuthContainer from "./containers/AuthContainer.jsx";
 import Layout from "./layout/Layout.jsx";
 import Dashboard from "./containers/Dashboard.jsx";
+import CBB from './cbb/CBB.jsx';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   loginUser,
@@ -61,8 +64,9 @@ function App() {
 
   return (
     <div className="App" style={colorway}>
-      <Layout currentUser={currentUser}>
         <Switch>
+            <Route path='/cbb' component={CBB} />
+      <Layout currentUser={currentUser}>
           <Route path="/dashboard">
             <Dashboard
               currentUser={currentUser}
@@ -76,8 +80,8 @@ function App() {
               handleRegister={handleRegister}
             />
           </Route>
-        </Switch>
       </Layout>
+        </Switch>
     </div>
   );
 }
