@@ -14,5 +14,3 @@ export default function Layout(props) {
     </div>
   );
 }
-
-// I think the circle has to go here somehow as an image
