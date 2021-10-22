@@ -60,7 +60,10 @@ function App() {
         backgroundColor: currentUser.backgroundColor,
         color: currentUser.foregroundColor,
       }
-    : {};
+    : {
+      backgroundColor: 'grey',
+        color: 'pink',
+    };
 
   return (
     <div className="App" style={colorway}>
