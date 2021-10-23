@@ -66,7 +66,6 @@ function App() {
     };
 
   return (
-    <div className="App" style={colorway}>
         <Switch>
             <Route path='/cbb' component={CBB} />
       <Layout currentUser={currentUser}>
@@ -86,7 +85,6 @@ function App() {
           </Route>
       </Layout>
         </Switch>
-    </div>
   );
 }
 

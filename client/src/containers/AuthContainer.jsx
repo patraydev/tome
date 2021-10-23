@@ -10,7 +10,10 @@ import ConfirmPasswordResetForm from '../forms/ConfirmPasswordResetForm.jsx';
 
 import { emailValidation, passwordValidation } from '../helpers/validation.js';
 
-import "../assets/style/AuthContainer.css";
+// import "../assets/style/AuthContainer.css";
+
+import { Container } from "../styled/Container.js";
+import { Button } from "../styled/Buttons.js";
 
 import circle from "../assets/images/ward.png";
 
@@ -57,8 +60,8 @@ function AuthContainer(props) {
   };
 
   return (
-    <div className="auth-main">
-      <Modal show={showLogin} handleClose={hideModalLogin} size="small">
+    <Container>
+      <Modal show={showLogin} handleClose={hideModalLogin} size="small" color="#fadde1">
         <Validator validate={validate}>
           <LoginForm
             handleLogin={handleLogin}
@@ -68,12 +71,12 @@ function AuthContainer(props) {
           />
         </Validator>
       </Modal>
-      <Modal show={showRegister} handleClose={hideModalRegister} size="small">
+      <Modal show={showRegister} handleClose={hideModalRegister} size="small" color="#fadde1">
         <Validator validate={validate}>
           <RegisterForm handleRegister={handleRegister} />
         </Validator>
       </Modal>
-      <Modal show={showPasswordReset} handleClose={hideModalPasswordReset} size="small">
+      <Modal show={showPasswordReset} handleClose={hideModalPasswordReset} size="small" color="#fadde1">
         <Validator validate={validate}>
           <SendPasswordResetForm
             showModalRegister={showModalRegister}
@@ -86,11 +89,11 @@ function AuthContainer(props) {
           <ConfirmPasswordResetForm/>
         </Validator>
       </Route>
-      <button className="login-button" onClick={showModalLogin}>
+      <Button onClick={showModalLogin} color="#fadde1">
         login
-      </button>
+        </Button>
       <img src={circle} className="weird-circle" alt="weird spinny circle" />
-    </div>
+    </Container>
   );
 }
 
