@@ -2,6 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
+body{
+  height: 100vh;
+   width: 100vw;
+   background-color: #3c3c3c;
+}
+
 @font-face {
   font-family: 'Ilisarniq';
   src: local('Ilisarniq'), url(./assets/fonts/Ilisarniq-Light.otf) format('truetype');

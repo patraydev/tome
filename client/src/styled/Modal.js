@@ -3,11 +3,13 @@ import { mediaQueries } from "./mediaQueries.js";
 
 export const ModalButton = styled.button`
   padding: 10px 10px;
-  border: none;
+  width: 2em;
   border-radius: 5px;
   cursor: pointer;
   font-size: 2em;
+  color: #fadde1;
   background-color: #3c3c3c;
+  border: 3px solid #fadde1;
 
   ${(props) =>
         props.color &&
@@ -43,6 +45,7 @@ export const ModalContainer = styled.div`
   justify-content: center;
   z-index: 777;
   color: #fadde1;
+  border: 5px solid #fadde1;
 
   ${(props) =>
         props.color &&

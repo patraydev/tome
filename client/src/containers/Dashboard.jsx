@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
@@ -9,7 +9,10 @@ import Library from "../screens/Library.jsx";
 import Admin from "../screens/Admin.jsx";
 import Profile from "../screens/Profile.jsx";
 
-import circle from "../assets/images/ward.png";
+import { Container } from '../styled/Container.js';
+import { WeirdCircle } from "../styled/WeirdCircle.js";
+
+import ward from "../assets/images/ward.png";
 
 import {
   readAllCocktails,
@@ -26,6 +29,8 @@ function CocktailContainer(props) {
   const history = useHistory();
 
   const { currentUser, handleUpdateUser, handleLogout } = props;
+
+  const UserContext = createContext();
 
   useEffect(() => {
     const fetchCocktails = async () => {
@@ -60,11 +65,10 @@ function CocktailContainer(props) {
   // };
 
   return (
-    <div className="cocktail-container">
-      <img src={circle} className="weird-circle" alt="weird spinny circle" />
-      <div className="search-bar-box">
+    <UserContext.Provider value={currentUser}>
+      <Container>
+        <WeirdCircle src={ward}/>
         <Search cocktails={cocktails} currentUser={currentUser} />
-      </div>
       <Route
         render={({ location }) => (
           <TransitionGroup>
@@ -101,8 +105,9 @@ function CocktailContainer(props) {
             </CSSTransition>
           </TransitionGroup>
         )}
-      />
-    </div>
+        />
+        </Container>
+    </UserContext.Provider>
   );
 }
 

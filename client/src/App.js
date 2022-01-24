@@ -55,15 +55,15 @@ function App() {
     setCurrentUser(null);
   };
 
-  const colorway = currentUser
-    ? {
-        backgroundColor: currentUser.backgroundColor,
-        color: currentUser.foregroundColor,
-      }
-    : {
-      backgroundColor: 'grey',
-        color: 'pink',
-    };
+  // const colorway = currentUser
+  //   ? {
+  //       backgroundColor: currentUser.backgroundColor,
+  //       color: currentUser.foregroundColor,
+  //     }
+  //   : {
+  //     backgroundColor: 'grey',
+  //       color: 'pink',
+  //   };
 
   return (
         <Switch>
