@@ -1,6 +1,6 @@
 .results-container{
   display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr .5fr;
   gap: 10px;
   grid-template-rows: 1fr 4fr 2fr;
   min-height: 90vh;

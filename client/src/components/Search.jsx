@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom";
 import SearchResults from "../screens/SearchResults.jsx";
 import Modal from "./Modal.jsx";
 
+import { Container } from '../styled/Container.js';
+import { SearchForm,SearchInput} from '../styled/Search.js';
+
 import "../assets/style/Search.css";
 
 function Search({ cocktails, setCocktails, currentUser }) {
@@ -35,7 +38,8 @@ function Search({ cocktails, setCocktails, currentUser }) {
 
 
   return (
-    <div className="search-main">
+    // <div className="search-main">
+    <Container>
       <Modal show={show} handleClose={hideModalAndRedirect} size="large">
         <SearchResults
           searchTerm={formData.searchTerm}
@@ -44,15 +48,16 @@ function Search({ cocktails, setCocktails, currentUser }) {
           currentUser={currentUser}
         />
       </Modal>
-      <form
-        className="search-form"
+      <SearchForm
+      // <form
+      //   className="search-form"
         onSubmit={(e) => {
           e.preventDefault();
           showModal();
         }}
       >
         <label htmlFor="search"></label>
-        <input
+        <SearchInput
           name="searchTerm"
           type="text"
           autoComplete="off"
@@ -61,8 +66,9 @@ function Search({ cocktails, setCocktails, currentUser }) {
           autoFocus
         />
         <button type="submit">Search</button>
-      </form>
-    </div>
+      {/* </form> */}
+      </SearchForm>
+      </Container>
   );
 }
 

@@ -14,8 +14,11 @@ import { emailValidation, passwordValidation } from '../helpers/validation.js';
 
 import { Container } from "../styled/Container.js";
 import { Button } from "../styled/Buttons.js";
+import { WeirdCircle } from "../styled/WeirdCircle.js";
 
 import circle from "../assets/images/ward.png";
+
+import ward from "../assets/images/ward.png";
 
 function AuthContainer(props) {
   const [showLogin, setShowLogin] = useState(false);
@@ -91,8 +94,9 @@ function AuthContainer(props) {
       </Route>
       <Button onClick={showModalLogin} color="#fadde1">
         login
-        </Button>
-      <img src={circle} className="weird-circle" alt="weird spinny circle" />
+      </Button>
+      <WeirdCircle src={ward}/>
+      {/* <img src={circle} className="weird-circle" alt="weird spinny circle" /> */}
     </Container>
   );
 }
