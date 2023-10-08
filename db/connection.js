@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+
 require('dotenv').config();
 
 let MONGODB_URI =
-  process.env.PROD_MONGODB || process.env.LOCAL_MONGODB;
+  process.env.PROD_MONGODB || process.env.DEV_MONGODB;
 
 mongoose
   .connect(MONGODB_URI, {

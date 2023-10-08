@@ -12,8 +12,7 @@ export default function Navbar({currentUser}) {
 
   return (
     <Nav>
-        <NavIcon to='/dashboard'/>
-      <NavBrand to='/dashboard' color={ currentUser.foregroundColor}>TOME</NavBrand>
+      <NavBrand to='/dashboard' color={ currentUser ? currentUser.foregroundColor : "whitesmoke"}>TOME</NavBrand>
         {currentUser ?
       <NavItems>
           {currentUser.is_admin ?
@@ -22,9 +21,9 @@ export default function Navbar({currentUser}) {
             </NavItem>
              : null}
             <NavItem to='/dashboard/library' color={ currentUser.foregroundColor}>Library</NavItem>
-      <NavIcon to='/dashboard/profile' src={icon}/>
       </NavItems>
         : null}
+        <NavIcon to='/dashboard/profile' src={icon}/>
       </Nav>
   )
 }

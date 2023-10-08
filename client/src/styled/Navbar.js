@@ -5,7 +5,7 @@ import { mediaQueries } from "./mediaQueries.js";
 import tome from '../assets/images/tome.png';
 
 export const Nav = styled.nav`
-position: relative;
+/* position: relative; */
   display: flex;
   width: 100vw;
   flex-direction: row;

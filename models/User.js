@@ -38,11 +38,13 @@ userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, parseInt(process.env.SALT_ROUNDS));
   };
+
+  //BROKE after moving to new dev environment
   //if email is new or changed, send verification email
-  if (this.isNew || this.isModified('email')) {
-    await sendUserVerification(this);
-    next();
-  };
+  // if (this.isNew || this.isModified('email')) {
+  //   await sendUserVerification(this);
+  //   next();
+  // };
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -1,4 +1,5 @@
 const { v4 } = require("uuid");
+require('dotenv').config();
 
 const db = require("../db/connection.js");
 const UserVerification = require("../models/UserVerification.js");

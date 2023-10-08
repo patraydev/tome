@@ -17,7 +17,6 @@ import {
 } from "./helpers/auth.js";
 import { updateUser } from "./helpers/users.js";
 
-import "./App.css";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -55,27 +54,10 @@ function App() {
     setCurrentUser(null);
   };
 
-  // const colorway = currentUser
-  //   ? {
-  //       backgroundColor: currentUser.backgroundColor,
-  //       color: currentUser.foregroundColor,
-  //     }
-  //   : {
-  //     backgroundColor: 'grey',
-  //       color: 'pink',
-  //   };
 
   return (
-        <Switch>
-            <Route path='/cbb' component={CBB} />
       <Layout currentUser={currentUser}>
-          <Route path="/dashboard">
-            <Dashboard
-              currentUser={currentUser}
-              handleUpdateUser={handleUpdateUser}
-              handleLogout={handleLogout}
-            />
-          </Route>
+        <Switch>
           <Route exact path="/">
             <AuthContainer
               currentUser={currentUser}
@@ -83,8 +65,16 @@ function App() {
               handleRegister={handleRegister}
             />
           </Route>
-      </Layout>
+          <Route path="/dashboard">
+            <Dashboard
+              currentUser={currentUser}
+              handleUpdateUser={handleUpdateUser}
+              handleLogout={handleLogout}
+            />
+          </Route>
+            <Route path='/cbb' component={CBB} />
         </Switch>
+      </Layout>
   );
 }
 
