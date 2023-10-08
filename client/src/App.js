@@ -55,18 +55,17 @@ function App() {
     setCurrentUser(null);
   };
 
-  const colorway = currentUser
-    ? {
-        backgroundColor: currentUser.backgroundColor,
-        color: currentUser.foregroundColor,
-      }
-    : {
-      backgroundColor: 'grey',
-        color: 'pink',
-    };
+  // const colorway = currentUser
+  //   ? {
+  //       backgroundColor: currentUser.backgroundColor,
+  //       color: currentUser.foregroundColor,
+  //     }
+  //   : {
+  //     backgroundColor: 'grey',
+  //       color: 'pink',
+  //   };
 
   return (
-    <div className="App" style={colorway}>
         <Switch>
             <Route path='/cbb' component={CBB} />
       <Layout currentUser={currentUser}>
@@ -86,7 +85,6 @@ function App() {
           </Route>
       </Layout>
         </Switch>
-    </div>
   );
 }
 
