@@ -1,0 +1,37 @@
+.form-container {
+  display:flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  left: 0;
+  max-height: 90vh; 
+}
+
+.form-container > form {
+  max-height: 90vh;
+  overflow: scroll;
+}
+
+.form-row {
+  margin: 2px 0 2px 0;
+  display:flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.form-row > label {
+  /* padding: 10px 10px 0 10px; */
+  flex-grow: 1;
+  margin: 0;
+}
+
+.form-row > input, textarea {
+  opacity: .55;
+  flex-grow: 6;
+}
+
+.form-row > button {
+  /* font-size: 1.5em; */
+  /* flex-grow: 0; */
+}

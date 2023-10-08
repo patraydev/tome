@@ -6,7 +6,7 @@ import Modal from "./Modal.jsx";
 
 import "../assets/style/Search.css";
 
-function Search({ cocktails, setCocktails }) {
+function Search({ cocktails, setCocktails, currentUser }) {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({ searchTerm: "" });
   const { searchTerm } = formData;
@@ -30,7 +30,7 @@ function Search({ cocktails, setCocktails }) {
 
   const hideModalAndRedirect = () => {
     setShow(false);
-    history.push('/cocktails');
+    history.push('/dashboard');
   };
 
 
@@ -40,9 +40,8 @@ function Search({ cocktails, setCocktails }) {
         <SearchResults
           searchTerm={formData.searchTerm}
           cocktails={cocktails}
-          title="Search Results"
           hideModal={hideModal}
-          setCocktails={setCocktails}
+          currentUser={currentUser}
         />
       </Modal>
       <form

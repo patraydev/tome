@@ -1,25 +1,24 @@
 .edit-container{
   display: flex;
-  flex-direction: column;
-  min-height: 65vh;
-  max-height: 65vh;
+  flex-flow: column nowrap;
+  height: 65vh;
   min-width: 65vw;
   justify-content: flex-start;
   align-items: flex-start;
   margin-left: 15px;
+  overflow-y: scroll;
 }
 
 .edit-form{
-  min-height: 65vh;
-  max-height: 65vh;
-  min-width: 55vw;
+  /* min-height: 65vh; */
+  width: 50vw;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-items: flex-start;
-  border: 3px solid #fadde1;
   border-radius: 25px;
   margin: 10px 5px 5px 5px;
   padding-top: 10px;
+  overflow-y: scroll;
 }
 
 .edit-form textarea,
@@ -40,6 +39,14 @@
   border-bottom: 1px solid #fadde1;
 }
 
+.add-button-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 10px;
+  width: 95%;
+}
+
 .edit-form>label{
   margin-left: 10px;
   text-decoration: underline;
@@ -48,10 +55,24 @@
 .edit-container button{
   margin: 5px;
   font-size: 1.5em;
-  max-width: 20vw;
-  position: fixed;
   right: 0;
   bottom: 0;
 }
 
+.ingredient-add-button{
+min-width: 20vw;
+padding: 0 10px;
+}
+
+.ingredient-remove-button{
+  justify-self: flex-end;
+  padding: 0 5px;
+}
+
+.save-button {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 18px 9px;
+}
 

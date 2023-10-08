@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import "../assets/style/Login.css";
+import "../assets/style/LoginForm.css";
 
 export default function LoginForm(props) {
   const [submitError, setSubmitError] = useState("");
@@ -23,8 +23,8 @@ export default function LoginForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateSubmit) handleLogin(values);
-    setSubmitError("email and password do not match");
+    if (validateSubmit()) handleLogin(values).then(
+    setSubmitError("Incorrect login credentials. Please try again"));
   }
 
 
@@ -60,8 +60,8 @@ export default function LoginForm(props) {
         <div className="button-container">
         <span>{submitError}</span>
           <button type="submit">Login</button>
-        </div>
           <div className='links'><span className='link' onClick={showModalPasswordReset}>forgot password?</span> or <span className='link' onClick={handleRegRedirect}>don't have an account?</span></div>
+        </div>
       </form>
     </div>
   );

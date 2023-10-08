@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import Modal from "../components/Modal";
 
 import "../assets/style/EditCocktail.css";
 
 function EditCocktail({ cocktails, editCocktail }) {
-  const [show, setShow] = useState(true);
-  const [displayCocktail, setDisplayCocktail] = useState({
+  const [showEdit, setShowEdit] = useState(true);
+  const [cocktailToEdit, setCocktailToEdit] = useState({
     name: "",
     creator: "",
-    ingredients: "",
+    ingredients: ["","",""],
     bottom: "",
     rinse: "",
     float: "",
@@ -22,21 +22,27 @@ function EditCocktail({ cocktails, editCocktail }) {
     description: "",
   });
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
-    setShow(true);
-  },[show])
-
+    setShowEdit(true);
+  }, []);
 
   useEffect(() => {
-    setDisplayCocktail(
-      cocktails.find((cocktail) => cocktail._id === id)
-    );
+    if (cocktailToEdit && cocktailToEdit.ingredients.length === 0) {
+      setCocktailToEdit((prevState) => ({
+        ...prevState,
+        ingredients: ["", "", ""],
+      }))
+  }}, [cocktailToEdit]);
+
+  useEffect(() => {
+    setCocktailToEdit(cocktails.find((cocktail) => cocktail._id === id));
   }, [cocktails, id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDisplayCocktail((prevState) => ({
+    setCocktailToEdit((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -44,17 +50,43 @@ function EditCocktail({ cocktails, editCocktail }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editCocktail(id,displayCocktail);
+    console.log(cocktailToEdit);
+    editCocktail(id, cocktailToEdit);
   };
 
   const hideModal = () => {
-    setShow(false);
+    setShowEdit(false);
+    history.push("/cocktails");
   };
 
+  const modifyIngredient = (e, i) => {
+    setCocktailToEdit((currCocktail) => ({
+      ...currCocktail,
+      ingredients: currCocktail.ingredients.map((ing, index) => (index === i ? e.target.value : ing))
+    }
+    ))
+  };
+
+  const addIngredient = () => {
+    setCocktailToEdit((currCocktail) => ({
+      ...currCocktail,
+      ingredients: [...currCocktail.ingredients, ""]
+    }))
+  };
+
+  const removeIngredient = (i) => {
+    setCocktailToEdit((currCocktail) => ({
+      ...currCocktail,
+      ingredients: currCocktail.ingredients.filter((ing, index) => index !== i)
+    }))
+  };
+
+
+
   return (
-    <Modal size="medium" show={show} handleClose={hideModal}>
+    <Modal size="medium" show={showEdit} handleClose={hideModal}>
       <>
-        {displayCocktail ? (
+        {cocktailToEdit ? (
           <div className="edit-container">
             <form className="edit-form" onSubmit={handleSubmit}>
               <div className="input">
@@ -62,7 +94,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="name"
                   type="text"
-                  value={displayCocktail.name}
+                  value={cocktailToEdit.name}
                   onChange={handleChange}
                 />
               </div>
@@ -71,23 +103,34 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="creator"
                   type="text"
-                  value={displayCocktail.creator}
+                  value={cocktailToEdit.creator}
                   onChange={handleChange}
                 />
               </div>
-              <label htmlFor="ingredients">ingredients:</label>
-              <textarea
-                name="ingredients"
-                type="text"
-                value={displayCocktail.ingredients}
-                onChange={handleChange}
-              />
+              {cocktailToEdit.ingredients.map((ing, index) => (
+                <div key={index} className="input ingredient-item">
+                  <label>Ingredient {index + 1}: </label>
+                  <input
+                    type="text"
+                    value={ing}
+                    onInput={(e) => modifyIngredient(e, index)}
+                  />
+                  <button type='button' className="ingredient-remove-button" onClick={() => removeIngredient(index)}>
+                    -
+                  </button>
+                </div>
+              ))}
+
+          <div className='add-button-box'>
+      <button type='button' className="ingredient-add-button" onClick={addIngredient}>add ingredient
+      </button>
+                </div>
               <div className="input">
                 <label htmlFor="bottom">bottom:</label>
                 <input
                   name="bottom"
                   type="text"
-                  value={displayCocktail.bottom}
+                  value={cocktailToEdit.bottom}
                   onChange={handleChange}
                 />
               </div>
@@ -96,7 +139,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="rinse"
                   type="text"
-                  value={displayCocktail.rinse}
+                  value={cocktailToEdit.rinse}
                   onChange={handleChange}
                 />
               </div>
@@ -105,7 +148,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="float"
                   type="text"
-                  value={displayCocktail.float}
+                  value={cocktailToEdit.float}
                   onChange={handleChange}
                 />
               </div>
@@ -114,7 +157,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="top"
                   type="text"
-                  value={displayCocktail.top}
+                  value={cocktailToEdit.top}
                   onChange={handleChange}
                 />
               </div>
@@ -123,7 +166,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="glass"
                   type="text"
-                  value={displayCocktail.glass}
+                  value={cocktailToEdit.glass}
                   onChange={handleChange}
                 />
               </div>
@@ -132,7 +175,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="ice"
                   type="text"
-                  value={displayCocktail.ice}
+                  value={cocktailToEdit.ice}
                   onChange={handleChange}
                 />
               </div>
@@ -141,7 +184,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="garnish"
                   type="text"
-                  value={displayCocktail.garnish}
+                  value={cocktailToEdit.garnish}
                   onChange={handleChange}
                 />
               </div>
@@ -150,7 +193,7 @@ function EditCocktail({ cocktails, editCocktail }) {
                 <input
                   name="method"
                   type="text"
-                  value={displayCocktail.method}
+                  value={cocktailToEdit.method}
                   onChange={handleChange}
                 />
               </div>
@@ -158,10 +201,10 @@ function EditCocktail({ cocktails, editCocktail }) {
               <textarea
                 name="description"
                 type="text"
-                value={displayCocktail.description}
+                value={cocktailToEdit.description}
                 onChange={handleChange}
               />
-              <button type="submit">Save Changes</button>
+              <button type="submit" className='save-button'>Save Changes</button>
             </form>
           </div>
         ) : (

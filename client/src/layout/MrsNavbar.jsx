@@ -5,28 +5,33 @@ import tome from '../assets/images/tome.png';
 
 import '../assets/style/MrsNavbar.css';
 
+
 export default function MrsNavbar(props) {
-  const { currentUser, handleLogout } = props;
-  
+  const { currentUser} = props;
+
+  const colorway = currentUser
+    ? {
+        color: currentUser.foregroundColor,
+      }
+    : {};
+
   return (
     <header>
       <div className='brand-box'>
       <img className='brand-icon' src={tome} alt='user icon'/>
-      <div className='brand-text'><Link to='/cocktails'>TOME</Link></div>
+      <div className='brand-text'><Link style={colorway} to='/dashboard'>TOME</Link></div>
       </div>
       {currentUser ?
         <div className='nav-links'>
-          {/* <Link to='/cocktails'>
-            <div className='nav-item'>Admin</div>
+          {currentUser.is_admin ?
+            <Link style={colorway} to='/dashboard/admin'>
+              <div className='nav-item'>Admin</div>
             </Link>
-          <Link to='/cocktails'>
-            <div className='nav-item'>Library</div>
-            </Link> */}
-          
-            <Link to='/'>
-              <div className='nav-item' onClick={handleLogout}>Log Out</div>
+            : null}
+            <Link style={colorway} to='/dashboard/library'>
+              <div className='nav-item'>Library</div>
             </Link> 
-          <Link to='/cocktails'>
+          <Link style={colorway} to='/dashboard/profile'>
             <img className='nav-icon' src={icon} alt='user icon' />
             </Link>
         </div>

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 
-
 import Modal from "../components/Modal";
 
 import "../assets/style/EditCocktail.css";

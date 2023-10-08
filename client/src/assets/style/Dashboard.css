@@ -1,28 +1,24 @@
-.dashboard-main {
+.cocktail-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+   height: 100vh;
+   width: 16vw;
 }
 
-
-.dashboard-main .weird-circle{
-  max-width: 55vw;
+.weird-circle{
+  max-width: 66vw;
   max-height: 85vh;
-  margin-top: -11em;
-  margin-right: 2em;
-  position: absolute;
-  justify-self: center;
+  position: fixed;
+  z-index: 0;
   animation: rotation 666s infinite linear;
   overflow:hidden;
-  z-index: 0;
 }
 
-.login-button{
-  margin-top: 1em;
-  align-self: center;
+.search-bar-box{
+  position:fixed;
   z-index: 1;
 }
 
@@ -34,3 +30,4 @@
     transform: rotate(359deg);
   }
 }
+

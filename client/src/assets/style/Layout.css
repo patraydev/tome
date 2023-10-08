@@ -14,15 +14,20 @@ header {
 .layout-main{
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
   /* background-color: aqua; */
 }
 
 .layout-nav{
   flex-grow: 0;
+  /* z-index: 1; */
 }
 
 .layout-kids{
   flex-grow: 1;
-  justify-content: space-between;
+  /* z-index: 2; */
+  display: flex;
+  justify-content: center;
   align-items: center;
 }

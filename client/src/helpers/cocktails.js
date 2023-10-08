@@ -16,11 +16,16 @@ export const readOneCocktail = async (id) => {
 };
 
 export const updateCocktail = async (id, data) => {
-  const resp = await api.put(`/cocktails/${id}`, { cocktail: data });
+  const resp = await api.put(`/cocktails/${id}`, data);
   return resp.data;
 };
 
 export const destroyCocktail = async (id) => {
   const resp = await api.delete(`/cocktails/${id}`);
+  return resp.data;
+};
+
+export const createRequest = async (id, data) => {
+  const resp = await api.post(`/cocktails/${id}/request`, data);
   return resp.data;
 };
