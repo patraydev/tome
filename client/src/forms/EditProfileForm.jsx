@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 import '../assets/style/EditProfileForm.css';
 
 export default function EditProfileForm(props) {
+
 
   const {
     currentUser,
@@ -11,6 +14,8 @@ export default function EditProfileForm(props) {
     validateSubmit,
     touched,
     values, } = props;
+
+    const [user, setUser] = useState(currentUser);
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -42,7 +47,7 @@ export default function EditProfileForm(props) {
               onBlur={handleBlur}
               required
             />
-            {touched.password && errors.password}
+            {touched.foregroundColor && errors.foregroundColor}
           </label>
           <label htmlFor="background-color">Background
           <input
@@ -53,7 +58,7 @@ export default function EditProfileForm(props) {
               onBlur={handleBlur}
               required
             />
-            {touched.password && errors.password}
+            {touched.backgroundColor && errors.backgroundColor}
           </label>
           <button onClick={handleSubmit}>Save</button>
         </form>

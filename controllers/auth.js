@@ -38,7 +38,8 @@ const signUp = async (req, res) => {
 const signIn = async (req, res) => {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ email: email });
+      flatEmail = email.toLowerCase();
+      const user = await User.findOne({ email: flatEmail });
         if (await bcrypt.compare(password, user.password)) {
           const payload = {
             userID: user._id,

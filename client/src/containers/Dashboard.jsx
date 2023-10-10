@@ -65,8 +65,7 @@ function CocktailContainer(props) {
   // };
 
   return (
-    <UserContext.Provider value={currentUser}>
-      <Container>
+      <Container  currentUser={currentUser} thisone={false}>
         <WeirdCircle src={ward}/>
         <Search cocktails={cocktails} currentUser={currentUser} />
       <Route
@@ -107,7 +106,6 @@ function CocktailContainer(props) {
         )}
         />
         </Container>
-    </UserContext.Provider>
   );
 }
 

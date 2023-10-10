@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import List from '../components/List.jsx';
 import DisplayCocktail from "../components/DisplayCocktail";
 
+import {ResultsContainer,Title,ResultsList,ListItem,Display,UserCard,UserCardImg,ButtonContainer,LibraryButton} from "../styled/SearchResults.js";
+
 import { addToLibrary } from "../helpers/library.js";
 
 import "../assets/style/SearchResults.css";
@@ -56,15 +58,15 @@ function SearchResults({
   };
 
   return (
-    <div className="results-container">
-      <div className="title">Search Results</div>
-      <div className="results-list">
+    <ResultsContainer>
+      <Title>Search Results</Title>
+      <ResultsList>
         <List
           cocktails={filteredCocktails}
           setDisplayCocktail={setDisplayCocktail}
         />
-      </div>
-      <div className="display">
+      </ResultsList>
+      <Display>
         {displayCocktail ? (
           <DisplayCocktail
             displayType="display"
@@ -78,21 +80,21 @@ function SearchResults({
             ᑲᓇᖕᓇᖅᐸᓯᖕᒥᐅᑕᖅ'
           </>
         )}
-      </div>
-      <div className="detail-button-container">
+      </Display>
+      <ButtonContainer>
         {displayCocktail && isAdmin ? (
           <>
             <Link to={`/dashboard/edit/${displayCocktail._id}`}>
-              <button onClick={hideModal}>Edit</button>
+              <LibraryButton onClick={hideModal}>Edit</LibraryButton>
             </Link>
             {/* <Link to={"/cocktails"}>
               <button onClick={handleDelete}>Delete</button>
             </Link> */}
           </>
         ) : null}
-        <button onClick={handleAdd}>Add to Library</button>
-      </div>
-    </div>
+        <LibraryButton onClick={handleAdd}>Add to Library</LibraryButton>
+      </ButtonContainer>
+      </ResultsContainer>
   );
 }
 

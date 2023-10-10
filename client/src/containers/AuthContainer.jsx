@@ -63,7 +63,7 @@ function AuthContainer(props) {
   };
 
   return (
-    <Container>
+    <Container currentUser={props.currentUser} thisone={true}>
       <Modal show={showLogin} handleClose={hideModalLogin} size="small" color="#fadde1">
         <Validator validate={validate}>
           <LoginForm

@@ -17,9 +17,6 @@ router.post('/cocktails', cocktailControllers.createCocktail);
 router.put('/cocktails/:id', cocktailControllers.updateCocktail);
 router.delete('/cocktails/:id', cocktailControllers.deleteCocktail);
 
-
-
-
 router.post('/sign-up', authControllers.signUp);
 router.post('/sign-in', authControllers.signIn);
 router.get('/verify', authControllers.verify);

@@ -1,3 +1,5 @@
+import {ListItem} from "../styled/SearchResults.js";
+
 function List({cocktails,setDisplayCocktail}) {
 
   const handleSelect = (e) => {
@@ -10,14 +12,13 @@ function List({cocktails,setDisplayCocktail}) {
   const list =
     cocktails ?
       cocktails.map((cocktail, index) => (
-        <div
-          className="list-item"
+        <ListItem
           key={index}
           id={cocktail._id}
           onClick={(e) => handleSelect(e)}
         >
           {cocktail ? cocktail.name : "nothing found"}
-        </div>
+        </ListItem>
       )) :
       null;
    

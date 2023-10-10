@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 body{
   height: 100vh;
    width: 100vw;
-   background-color: #3c3c3c;
+   background-color: rosybrown;
 }
 
 @font-face {
@@ -18,6 +18,19 @@ body{
 
 a {
   text-decoration: none;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+li {
+  list-style-type: none;
+  
+}
+
+li:hover{
+  cursor: pointer;
 }
 
 input, textarea {

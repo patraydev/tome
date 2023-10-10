@@ -7,16 +7,15 @@ export const ModalButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   font-size: 2em;
-  color: #fadde1;
-  background-color: #3c3c3c;
   border: 3px solid #fadde1;
 
   ${(props) =>
-        props.color &&
-        css`
-            color: ${props.color};
-            border: 2px solid ${props.color};
-        `} 
+    props.currentUser &&
+    css`
+      background-color: ${props.currentUser.backgroundColor};
+      color: ${props.currentUser.foregroundColor};
+      border: 2px solid ${props.currentUser.foregroundColor};
+    `}
 
   ${(props) =>
     props.close &&
@@ -35,23 +34,22 @@ export const ModalButton = styled.button`
 
 export const ModalContainer = styled.div`
   position: fixed;
-  background-color: #3c3c3c;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 25px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 777;
-  color: #fadde1;
-  border: 5px solid #fadde1;
 
   ${(props) =>
-        props.color &&
-        css`
-            border: 5px solid ${props.color};
-        `} 
+    props.theme &&
+    css`
+      background-color: ${props.theme.backgroundColor};
+      color: ${props.theme.foregroundColor};
+      border: 2px solid ${props.theme.foregroundColor};
+    `}
 
   ${(props) =>
     props.size && props.size === "large"

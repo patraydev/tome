@@ -4,15 +4,17 @@ import { useHistory } from "react-router-dom";
 import SearchResults from "../screens/SearchResults.jsx";
 import Modal from "./Modal.jsx";
 
-import { Container } from '../styled/Container.js';
-import { SearchForm,SearchInput} from '../styled/Search.js';
+import { Container } from "../styled/Container.js";
+import { SearchForm, SearchInput } from "../styled/Search.js";
 
 import "../assets/style/Search.css";
 
 function Search({ cocktails, setCocktails, currentUser }) {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({ searchTerm: "" });
+
   const { searchTerm } = formData;
+
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -33,14 +35,17 @@ function Search({ cocktails, setCocktails, currentUser }) {
 
   const hideModalAndRedirect = () => {
     setShow(false);
-    history.push('/dashboard');
+    history.push("/dashboard");
   };
 
-
   return (
-    // <div className="search-main">
     <Container>
-      <Modal show={show} handleClose={hideModalAndRedirect} size="large">
+      <Modal
+        show={show}
+        handleClose={hideModalAndRedirect}
+        size="large"
+        currentUser={currentUser}
+      >
         <SearchResults
           searchTerm={formData.searchTerm}
           cocktails={cocktails}
@@ -49,26 +54,24 @@ function Search({ cocktails, setCocktails, currentUser }) {
         />
       </Modal>
       <SearchForm
-      // <form
-      //   className="search-form"
         onSubmit={(e) => {
           e.preventDefault();
           showModal();
         }}
       >
-        <label htmlFor="search"></label>
+        {/* <label htmlFor="search"></label> */}
         <SearchInput
           name="searchTerm"
           type="text"
           autoComplete="off"
           value={searchTerm}
           onChange={handleChange}
+          currentUser={currentUser}
           autoFocus
         />
-        <button type="submit">Search</button>
-      {/* </form> */}
+        <SearchInput type="submit" value="search" currentUser={currentUser} />
       </SearchForm>
-      </Container>
+    </Container>
   );
 }
 
