@@ -54,12 +54,12 @@ export const ModalContainer = styled.div`
   ${(props) =>
     props.size && props.size === "large"
       ? css`
-          width: 90vw;
-          height: 90vh;
+          width: 97vw;
+          height: 97vh;
         `
       : css`
           ${mediaQueries("phone")} {
-            width: 90vw;
+            width: 95vw;
             height: 65vh;
           }
           ${mediaQueries("tablet")} {

@@ -68,10 +68,11 @@ export const NavItem = styled(Link)`
   cursor: pointer;
   transition: 250ms;
   cursor: pointer;
-  color: #ffffff;
   text-decoration: none;
   font-size: 2em;
   margin-right: 0.7em;
+  font-family: 'Ilisarniq-Demi';
+
 
   &:hover {
     transform: scale(1.25);
@@ -86,7 +87,7 @@ export const NavItem = styled(Link)`
 
 export const NavBrand = styled(NavItem)`
   flex-grow: 0;
-  font-weight: 700;
+  font-family: 'Ilisarniq-Black';
 
   ${mediaQueries("phone")} {
     font-size: 48px;

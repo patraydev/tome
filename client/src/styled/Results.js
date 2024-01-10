@@ -4,10 +4,11 @@ export const ResultsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 0.5fr;
   gap: 10px;
-  grid-template-rows: 1fr 4fr 2fr;
+  grid-template-rows: 1fr 5fr 2fr;
   min-height: 90vh;
   max-height: 90vh;
   margin: 0 5px;
+  width: 100%;
 `;
 
 export const Title = styled.div`
@@ -18,6 +19,8 @@ export const Title = styled.div`
   text-align: left;
   margin: 10px 0 0 10px;
   font-weight: 666;
+  font-family: 'Ilisarniq-Black';
+
 `;
 
 export const ResultsList = styled.ul`
@@ -30,8 +33,7 @@ export const ResultsList = styled.ul`
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  justify-content: center;
+  /* justify-content: center; */
 
   ${(props) =>
     props.theme &&
@@ -47,6 +49,9 @@ export const ListItem = styled.li`
   margin: 4px;
   padding: 3px;
   text-align: center;
+  font-family: 'Ilisarniq-Demi';
+
+  
 
   ${(props) =>
     props.theme &&

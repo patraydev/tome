@@ -1,4 +1,4 @@
-import {ListItem} from "../styled/SearchResults.js";
+import {ListItem} from "../styled/Results.js";
 
 function List({cocktails,setDisplayCocktail}) {
 

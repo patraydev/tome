@@ -16,6 +16,56 @@ body{
   src: local('Ilisarniq'), url(./assets/fonts/Ilisarniq-Light.otf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Ilisarniq-Black';
+  src: local('NostromoBlack'), url('./src/assets/fonts/Ilisarniq-Black.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Black-Italic';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-BlackItalic.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Bold';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-Bold.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Bold-Italic';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-BoldItalic.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Demi';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-Demi.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Demi-Italic';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-DemiItalic.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Italic';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-Italic.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Light';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-Light.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Light-Italic';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-LightItalic.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ilisarniq-Regular';
+  src: local('Ilisarniq'), url('./src/assets/fonts/Ilisarniq-Regular.otf') format('truetype');
+}
+
 a {
   text-decoration: none;
 }

@@ -1,23 +1,29 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import List from '../components/List.jsx';
+import List from "../components/List.jsx";
 import DisplayCocktail from "../components/DisplayCocktail";
 
-import {ResultsContainer,Title,ResultsList,ListItem,Display,UserCard,UserCardImg,ButtonContainer,LibraryButton} from "../styled/SearchResults.js";
+import {
+  ResultsContainer,
+  Title,
+  ResultsList,
+  Display,
+  UserCard,
+  UserCardImg,
+  ButtonContainer,
+  LibraryButton,
+} from "../styled/Results.js";
+import { SearchForm, SearchInput } from "../styled/Search.js";
 
 import { addToLibrary } from "../helpers/library.js";
 
 import "../assets/style/SearchResults.css";
 
-function SearchResults({
-  searchTerm,
-  cocktails,
-  currentUser,
-  hideModal,
-}) {
+function SearchResults({ searchTerm, cocktails, currentUser, hideModal }) {
   const [filteredCocktails, setFilteredCocktails] = useState([]);
   const [displayCocktail, setDisplayCocktail] = useState(false);
+  const [formData, setFormData] = useState({ searchTerm: searchTerm });
 
   const isAdmin = currentUser && currentUser.is_admin;
 
@@ -32,6 +38,10 @@ function SearchResults({
     if (displayCocktail) {
       setDisplayCocktail(
         cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
+      );
+    } else {
+      setDisplayCocktail(
+        cocktails[Math.floor(Math.random() * cocktails.length)]
       );
     }
   }, [cocktails, displayCocktail]);
@@ -53,8 +63,16 @@ function SearchResults({
     const cocktailID = displayCocktail._id;
     await addToLibrary({
       userID: userID,
-      cocktailID: cocktailID
+      cocktailID: cocktailID,
     });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
@@ -66,6 +84,15 @@ function SearchResults({
           setDisplayCocktail={setDisplayCocktail}
         />
       </ResultsList>
+      <SearchForm>
+        <SearchInput
+          name="searchTerm"
+          type="text"
+          autoComplete="off"
+          value={searchTerm}
+          onChange={handleChange}
+        />
+      </SearchForm>
       <Display>
         {displayCocktail ? (
           <DisplayCocktail
@@ -94,7 +121,7 @@ function SearchResults({
         ) : null}
         <LibraryButton onClick={handleAdd}>Add to Library</LibraryButton>
       </ButtonContainer>
-      </ResultsContainer>
+    </ResultsContainer>
   );
 }
 

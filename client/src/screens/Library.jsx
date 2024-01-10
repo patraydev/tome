@@ -8,6 +8,17 @@ import DisplayCocktail from "../components/DisplayCocktail.jsx";
 import icon from "../assets/images/icon01.png";
 import { readLibrary, removeFromLibrary } from "../helpers/library.js";
 
+import {
+  ResultsContainer,
+  Title,
+  ResultsList,
+  Display,
+  UserCard,
+  UserCardImg,
+  ButtonContainer,
+  LibraryButton,
+} from "../styled/Results.js";
+
 function Library({ currentUser }) {
   const [show, setShow] = useState(true);
   const [displayCocktail, setDisplayCocktail] = useState(false);
@@ -49,50 +60,51 @@ function Library({ currentUser }) {
 
   return (
     <Modal show={show} handleClose={hideModal} size="large">
-      <div className="results-container">
-        <div className="title">Library</div>
-        <div className="results-list">
+      <ResultsContainer>
+        <Title>Library</Title>
+        <ResultsList>
           <List cocktails={library} setDisplayCocktail={setDisplayCocktail} />
-        </div>
-        <div className="display">
+        </ResultsList>
+        <Display>
           {displayCocktail ? (
             <DisplayCocktail
-              displayType="display"
               displayCocktail={displayCocktail}
             />
           ) : (
-            <>
+            <div className="cocktail-detail">
               'ᕋᐃᔭᓐ ᕙᓛᓇᒐᓐ ᐅᓪᓗᒥ ᐃᓕᖅᑯᓯᕆᖕᒪᒍ, ᓴᓇᔨᓪᓚᕆᐊᓗᒃ ᓂᕆᑎᑦᑎᔪᓐᓇᖅᑐᖅ ᐅᑕᖅᑭᔪᓂᒃ ᑲᑎᙵᔪᓂᒃ
               ᐱᐅᔪᒻᒪᕆᐊᓗᖕᒥᒃ ᒪᕐᕋᕐᒥᒃ, ᐊᒻᒪ ᐊᑕᐅᑦᑎᒃᑯᑦ ᓴᖅᑭᑎᑦᑎᓪᓗᓂ ᑕᐅᑐᖅᑰᖅᑕᒥᓂᒃ ᓄᓇᕐᔪᐊᕐᒥ.
               ᖃᓄᐃᒻᒪᑦ ᐃᖅᑲᓇᐃᔭᙱᓚᖅ, ᓱᕋᒃᓯᒪᕙ ᐃᓄᑑᓪᓗᓂᓗ? ᐳᕋᐃᔭᓐ ᑎᓯᔪᖅ ᒫᑕᓐ ᐊᓐᓄᕌᓕᐊᕆᓪᓗᓂᐅᒃ
               ᑲᓇᖕᓇᖅᐸᓯᖕᒥᐅᑕᖅ'
-            </>
+            </div>
           )}
-        </div>
-        <div className="user-card-container">
+        </Display>
+        <UserCard>
           <Link style={colorway} to="/dashboard/profile">
-            <img className="user-icon" src={icon} alt="user icon" />
+            <UserCardImg src={icon} alt="user icon" />
             <div className="user-name">
               {currentUser.username || currentUser.email}
             </div>
           </Link>
-        </div>
-        <div className="detail-button-container">
+        </UserCard>
+        <ButtonContainer>
           <Link to={"/dashboard/new"}>
-            <button onClick={hideModal}>Create</button>
+            <LibraryButton onClick={hideModal}>Create</LibraryButton>
           </Link>
           {displayCocktail ? (
             <>
               <Link to={`/dashboard/edit/${displayCocktail._id}`}>
-                <button onClick={hideModal}>Edit</button>
+                <LibraryButton onClick={hideModal}>Edit</LibraryButton>
               </Link>
               <Link to={"/dashboard"}>
-                <button onClick={handleRemove}>Remove From Library</button>
+                <LibraryButton onClick={handleRemove}>
+                  Remove From Library
+                </LibraryButton>
               </Link>
             </>
           ) : null}
-        </div>
-      </div>
+        </ButtonContainer>
+      </ResultsContainer>
     </Modal>
   );
 }

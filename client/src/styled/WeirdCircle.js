@@ -20,10 +20,11 @@ export const WeirdCircle = styled.img`
   background-size: cover; */
   /* src: url(${circle}); */
   pointer-events: none;
-  max-width: 66vw;
-  max-height: 85vh;
+  max-width: 80vw;
+  max-height: 100vh;
   overflow: visible;
   position: fixed;
+  top: 3%;
   z-index: 0;
   animation: ${rotation} 666s infinite linear;
   /* border: 1px solid hotpink; */

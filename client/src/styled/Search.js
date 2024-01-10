@@ -10,10 +10,13 @@ export const SearchForm = styled.form`
 export const SearchInput = styled.input`
   min-height: 13vh;
   max-width: 30vw;
-  margin: 1em;
+  margin: .3em;
   border-radius: 25px;
   font-size: 3em;
   padding-left: 10px;
+  font-family: 'Ilisarniq-Bold';
+  grid-row: 9;
+
 
   ${(props) =>
     props.theme &&
