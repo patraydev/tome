@@ -10,13 +10,9 @@ import ConfirmPasswordResetForm from '../forms/ConfirmPasswordResetForm.jsx';
 
 import { emailValidation, passwordValidation } from '../helpers/validation.js';
 
-// import "../assets/style/AuthContainer.css";
-
 import { Container } from "../styled/Container.js";
-import { Button } from "../styled/Buttons.js";
+import { LoginButton } from "../styled/Buttons.js";
 import { WeirdCircle } from "../styled/WeirdCircle.js";
-
-import circle from "../assets/images/ward.png";
 
 import ward from "../assets/images/ward.png";
 
@@ -92,11 +88,10 @@ function AuthContainer(props) {
           <ConfirmPasswordResetForm/>
         </Validator>
       </Route>
-      <Button onClick={showModalLogin} color="#fadde1">
+      <LoginButton onClick={showModalLogin}>
         login
-      </Button>
+      </LoginButton>
       <WeirdCircle src={ward}/>
-      {/* <img src={circle} className="weird-circle" alt="weird spinny circle" /> */}
     </Container>
   );
 }

@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import "../assets/style/LoginForm.css";
 
+import { Form, AuthInput, Label } from '../styled/Forms';
+import { LoginButton } from '../styled/Buttons';
+import { Container } from '../styled/Container';
+
 export default function LoginForm(props) {
   const [submitError, setSubmitError] = useState("");
 
@@ -29,11 +33,11 @@ export default function LoginForm(props) {
 
 
   return (
-    <div className="auth-container">
-      <form onSubmit={handleSubmit}>
+    <Container>
+      <Form onSubmit={handleSubmit}>
         
-        <label htmlFor="email-input">
-        <input
+        <Label htmlFor="email-input">
+        <AuthInput
           name="email"
           type="text"
           placeholder="email"
@@ -43,9 +47,9 @@ export default function LoginForm(props) {
             required
           />
           {touched.email && errors.email}
-        </label>
-        <label htmlFor="password">
-        <input
+        </Label>
+        <Label htmlFor="password">
+        <AuthInput
           name="password"
           type="password"
           placeholder="password"
@@ -55,13 +59,13 @@ export default function LoginForm(props) {
             required
           />
           {touched.password && errors.password}
-        </label>
-        <div className="button-container">
+        </Label>
+        <Container>
         <span>{submitError}</span>
-          <button type="submit">Login</button>
+          <LoginButton type="submit">Login</LoginButton>
           <div className='links'><span className='link' onClick={showModalPasswordReset}>forgot password?</span> or <span className='link' onClick={handleRegRedirect}>don't have an account?</span></div>
-        </div>
-      </form>
-    </div>
+        </Container>
+      </Form>
+    </Container>
   );
 }

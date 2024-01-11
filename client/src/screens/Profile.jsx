@@ -4,6 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import Modal from "../components/Modal.jsx";
 import EditProfileForm from "../forms/EditProfileForm.jsx";
 import Validator from "../components/Validator.jsx";
+import { Container } from "../styled/Container.js";
+import { Button } from "../styled/Buttons.js";
+
 
 import {
   usernameValidation,
@@ -32,8 +35,8 @@ function Profile({ currentUser, handleUpdateUser, handleLogout }) {
   };
 
   return (
-    <Modal show={show} handleClose={hideModal} size="large">
-      <div className="profile-container">
+    <Modal show={show} handleClose={hideModal} size="small">
+      <Container>
         {currentUser ? (
           <Validator validate={validate}>
             <EditProfileForm
@@ -44,12 +47,12 @@ function Profile({ currentUser, handleUpdateUser, handleLogout }) {
         ) : (
           <div>loading...</div>
         )}
-        <div className="profile-button-container">
+        <Container>
           <Link to={"/"}>
-            <button onClick={handleLogout}>Logout</button>
+            <Button onClick={handleLogout}>Logout</Button>
           </Link>
-        </div>
-      </div>
+        </Container>
+      </Container>
     </Modal>
   );
 }

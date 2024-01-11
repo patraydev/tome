@@ -9,7 +9,7 @@ import Layout from "./layout/Layout.jsx";
 import Dashboard from "./containers/Dashboard.jsx";
 import CBB from "./cbb/CBB.jsx";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
   loginUser,
@@ -18,6 +18,7 @@ import {
   removeToken,
 } from "./helpers/auth.js";
 import { updateUser } from "./helpers/users.js";
+import { Container } from "./styled/Container.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -58,8 +59,9 @@ function App() {
   return (
     <ThemeProvider theme={currentUser || {
       foregroundColor: "whitesmoke",
-      backgroundColor: "brown",
+      backgroundColor: "rosybrown",
     }}>
+      <Container>
       <Layout
         currentUser={currentUser}
         handleUpdateUser={handleUpdateUser}
@@ -83,6 +85,7 @@ function App() {
           <Route path="/cbb" component={CBB} />
         </Switch>
       </Layout>
+      </Container>
     </ThemeProvider>
   );
 }

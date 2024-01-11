@@ -50,13 +50,12 @@ function EditCocktail({ cocktails, editCocktail }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(cocktailToEdit);
     editCocktail(id, cocktailToEdit);
   };
 
   const hideModal = () => {
     setShowEdit(false);
-    history.push("/cocktails");
+    history.push("/dashboard");
   };
 
   const modifyIngredient = (e, i) => {

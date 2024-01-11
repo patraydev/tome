@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import List from "../components/List.jsx";
-import DisplayCocktail from "../components/DisplayCocktail";
+import DisplayCocktail from "../components/DisplayCocktail.jsx";
 
 import {
   ResultsContainer,
@@ -12,9 +12,9 @@ import {
   UserCard,
   UserCardImg,
   ButtonContainer,
-  LibraryButton,
 } from "../styled/Results.js";
-import { SearchForm, SearchInput } from "../styled/Search.js";
+import { SearchForm, SearchInput } from "../styled/Forms.js";
+import { LibraryButton } from "../styled/Buttons.js";
 
 import { addToLibrary } from "../helpers/library.js";
 

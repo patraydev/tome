@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-import '../assets/style/EditProfileForm.css';
+import { Form, Input, ColorInput, Label, Title } from "../styled/Forms";
+import { Container } from "../styled/Container";
+import { Button } from "../styled/Buttons";
+
 
 export default function EditProfileForm(props) {
 
@@ -8,60 +11,61 @@ export default function EditProfileForm(props) {
   const {
     currentUser,
     handleUpdateUser,
-    errors,
-    handleBlur,
-    handleChange,
-    validateSubmit,
-    touched,
-    values, } = props;
+     } = props;
 
-    const [user, setUser] = useState(currentUser);
+    const [userData, setUserData] = useState({
+      username: currentUser.username,
+      foregroundColor: currentUser.foregroundColor,
+      backgroundColor: currentUser.backgroundColor,
+    });
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setUserData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    };
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (validateSubmit()) handleUpdateUser(currentUser._id,values)
+      handleUpdateUser(currentUser._id, userData)
     }
   
     return (
-      <div className="profile-edit-container">
-        <div className='profile-edit-title'>Edit Profile</div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username-input">
-          <input
+      <Container>
+        <Title>Edit Profile</Title>
+        <Form onSubmit={handleSubmit}>
+          <Label htmlFor="change-username">Change Username
+          <Input
             name="username"
             type="text"
             placeholder="username"
-              value={values.username}
-              onBlur={handleBlur}
+              value={userData.username}
               onChange={handleChange}
               required
             />
-            {touched.username && errors.username}
-          </label>
-          <label htmlFor="foreground-color">Foreground
-          <input
+          </Label>
+          <Label htmlFor="foreground-color">Foreground Color
+          <ColorInput
             name="foregroundColor"
             type="color"
-            value={values.foregroundColor}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              required
+            value={userData.foregroundColor}
+            onChange={handleChange}
+            required
             />
-            {touched.foregroundColor && errors.foregroundColor}
-          </label>
-          <label htmlFor="background-color">Background
-          <input
+          </Label>
+          <Label htmlFor="background-color">Background Color
+          <ColorInput
             name="backgroundColor"
             type="color"
-            value={values.backgroundColor}
+            value={userData.backgroundColor}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
             />
-            {touched.backgroundColor && errors.backgroundColor}
-          </label>
-          <button onClick={handleSubmit}>Save</button>
-        </form>
-      </div>
+          </Label>
+          <Button onClick={handleSubmit}>Save</Button>
+        </Form>
+      </Container>
     );
   }

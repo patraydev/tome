@@ -26,16 +26,10 @@ export const Nav = styled.nav`
   padding-inline-start: 0.5em;
 
   ${(props) =>
-    props.currentUser &&
+    props.theme &&
     css`
-      background-color: ${props.currentUser.backgroundColor};
-    `}
-
-
-  ${(props) =>
-    props.backgroundColor &&
-    css`
-      background-color: ${props.backgroundColor};
+      background-color: ${props.theme.backgroundColor};
+      color: ${props.theme.foregroundColor};
     `}
     
     

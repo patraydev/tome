@@ -35,10 +35,10 @@
   flex-direction: column;
 }
 
-.medium{
+/* .medium{
   width: 65vw;
   height: 70vh;
-}
+} */
 
 .small button{
   font-size: 1em;

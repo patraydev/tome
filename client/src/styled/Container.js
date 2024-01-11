@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -9,18 +8,15 @@ export const Container = styled.div`
   z-index: 666;
   justify-content: center;
   align-items: center;
+  flex: auto;
 
-   ${(props) =>
-    props.currentUser &&
+  ${(props) =>
+    props.theme &&
     css`
-      background-color: ${props.currentUser.backgroundColor};
+      /* background-color: ${props.theme.backgroundColor}; */
+      color: ${props.theme.foregroundColor};
     `}
 
-    ${(props) =>
-  props.backgroundColor &&
-  css`
-      background-color: ${props.backgroundColor};
-  `} 
 
 `;
 

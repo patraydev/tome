@@ -25,8 +25,8 @@ export const usernameValidation = (username) => {
   if (username.trim() === "") {
     return "Username is required";
   }
-  if (username.length > 6) {
-    return "Username must be less than 6 characters";
+  if (username.length > 12) {
+    return "Username must be less than 12 characters";
   }
   return null;
 };

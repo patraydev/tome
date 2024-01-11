@@ -2,25 +2,25 @@ import styled, { css } from "styled-components";
 import { mediaQueries } from "./mediaQueries.js";
 
 export const ModalButton = styled.button`
-  padding: 10px 10px;
+  padding: 5px 5px;
   width: 2em;
   border-radius: 5px;
+  z-index: 888;
   cursor: pointer;
   font-size: 2em;
-  border: 3px solid #fadde1;
 
   ${(props) =>
-    props.currentUser &&
+    props.theme &&
     css`
-      background-color: ${props.currentUser.backgroundColor};
-      color: ${props.currentUser.foregroundColor};
-      border: 2px solid ${props.currentUser.foregroundColor};
+      background-color: ${props.theme.backgroundColor};
+      color: ${props.theme.foregroundColor};
+      border: 2px solid ${props.theme.foregroundColor};
     `}
 
   ${(props) =>
     props.close &&
     css`
-      font-size: 3em;
+      font-size: 2em;
       position: fixed;
       right: 0;
       top: 0;

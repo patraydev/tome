@@ -79,23 +79,10 @@ export const UserCard = styled.div`
   max-width: 90%;
   margin: 10px 5px;
   padding: 20px 5px;
-`;
-
-export const UserCardImg = styled.img`
-  max-width: 10vw;
-`;
-
-export const ButtonContainer = styled.div`
-  grid-column: 3;
-  grid-row: 4 / 5;
   display: flex;
   flex-direction: column;
-`;
-
-export const LibraryButton = styled.button`
-  font-size: 1em;
-  min-width: 90%;
-  margin: 5px;
+  justify-content: center;
+  align-items: center;
 
   ${(props) =>
     props.theme &&
@@ -105,3 +92,34 @@ export const LibraryButton = styled.button`
       border: 2px solid ${props.theme.foregroundColor};
     `}
 `;
+
+export const UserCardImg = styled.img`
+  max-width: 10vw;
+`;
+
+export const UserCardName = styled.div`
+  text-align: center;
+`;
+
+
+
+export const ButtonContainer = styled.div`
+  grid-column: 3;
+  grid-row: 4 / 5;
+  display: flex;
+  flex-direction: column;
+`;
+
+// export const LibraryButton = styled.button`
+//   font-size: 1em;
+//   min-width: 90%;
+//   margin: 5px;
+
+//   ${(props) =>
+//     props.theme &&
+//     css`
+//       background-color: ${props.theme.backgroundColor};
+//       color: ${props.theme.foregroundColor};
+//       border: 2px solid ${props.theme.foregroundColor};
+//     `}
+// `;

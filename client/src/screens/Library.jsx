@@ -15,9 +15,10 @@ import {
   Display,
   UserCard,
   UserCardImg,
+  UserCardName,
   ButtonContainer,
-  LibraryButton,
 } from "../styled/Results.js";
+import { LibraryButton } from "../styled/Buttons.js";
 
 function Library({ currentUser }) {
   const [show, setShow] = useState(true);
@@ -82,9 +83,9 @@ function Library({ currentUser }) {
         <UserCard>
           <Link style={colorway} to="/dashboard/profile">
             <UserCardImg src={icon} alt="user icon" />
-            <div className="user-name">
+            <UserCardName>
               {currentUser.username || currentUser.email}
-            </div>
+            </UserCardName>
           </Link>
         </UserCard>
         <ButtonContainer>

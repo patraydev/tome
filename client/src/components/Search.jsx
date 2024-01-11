@@ -5,9 +5,9 @@ import SearchResults from "../screens/SearchResults.jsx";
 import Modal from "./Modal.jsx";
 
 import { Container } from "../styled/Container.js";
-import { SearchForm, SearchInput } from "../styled/Search.js";
+import { SearchForm, SearchInput } from "../styled/Forms.js";
+import { Button } from "../styled/Buttons.js";
 
-import "../assets/style/Search.css";
 
 function Search({ cocktails, setCocktails, currentUser }) {
   const [show, setShow] = useState(false);
@@ -69,7 +69,7 @@ function Search({ cocktails, setCocktails, currentUser }) {
           currentUser={currentUser}
           autoFocus
         />
-        <SearchInput type="submit" value="search" currentUser={currentUser} />
+        <Button type="submit" currentUser={currentUser}>Search</Button>
       </SearchForm>
     </Container>
   );

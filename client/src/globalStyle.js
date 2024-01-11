@@ -5,10 +5,14 @@ const GlobalStyle = createGlobalStyle`
 /* html, body, #app, #app>div { position: absolute; width: 100% !important; height: 100% !important; } */
 
 
-body{
+body, #root{
   height: 100vh;
    width: 100vw;
-   background-color: rosybrown;
+   margin: 0;
+   padding: 0;
+   background-color: pink;
+   display: flex;
+   flex-direction: column;
 }
 
 @font-face {
