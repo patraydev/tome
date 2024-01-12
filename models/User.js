@@ -10,6 +10,7 @@ const userSchema = new Schema(
     username: { type: String },
     foregroundColor: { type: String, default: "#fadde1" },
     backgroundColor: { type: String, default: "#3c3c3c" },
+    seal: {type: Number, default: 1},
     email: { type: String, required: [true, 'Users must have an email'] },
     is_admin: {
       type: Boolean,

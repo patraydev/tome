@@ -1,8 +1,21 @@
+import { useState, useEffect } from "react";
+
 import { Nav, NavIcon, NavBrand, NavItems, NavItem } from "../styled/Navbar";
 
 import icon from "../assets/images/icon01.png";
 
+
+
 export default function Navbar({ currentUser, handleUpdateUser, handleLogout }) {
+
+  const [path, setPath] = useState("../assets/images/icon01.png");
+
+  useEffect(() => {
+    if (currentUser) {
+      setPath(`../assets/images/seals/${currentUser.seal}.png`);
+    }
+  }, [currentUser]);
+
   return (
     <Nav currentUser={currentUser}>
       <NavBrand
@@ -25,7 +38,7 @@ export default function Navbar({ currentUser, handleUpdateUser, handleLogout }) 
       ) : null}
       <NavIcon
         to="/dashboard/profile"
-        src={icon}
+        src={path}
         currentUser={currentUser}
         handleUpdateUser={handleUpdateUser}
         handleLogout={handleLogout}
