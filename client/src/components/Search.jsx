@@ -51,6 +51,7 @@ function Search({ cocktails, setCocktails, currentUser }) {
           cocktails={cocktails}
           hideModal={hideModal}
           currentUser={currentUser}
+          handleChange={handleChange}
         />
       </Modal>
       <SearchForm

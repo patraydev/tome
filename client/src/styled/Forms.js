@@ -54,6 +54,19 @@ export const SearchInput = styled(Input)`
   grid-row: 9;
 `;
 
+export const SearchResultsForm = styled(Form)`
+  grid-row: 2;
+  grid-column: 1;
+  
+`;
+
+export const SearchResultsInput = styled(Input)`
+  min-height: 5vh;
+  font-size: 2em;
+  border-radius: 15px;
+
+`;
+
 export const Title = styled.div`
   font-size: 2em;
   align-self: flex-start;

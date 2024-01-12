@@ -73,14 +73,16 @@ export const NavItem = styled(Link)`
   }
 
   ${(props) =>
-    props.color &&
+    props.theme &&
     css`
-      color: ${props.color};
+      background-color: ${props.theme.backgroundColor};
+      color: ${props.theme.foregroundColor};
     `}
 `;
 
 export const NavBrand = styled(NavItem)`
   flex-grow: 0;
+  margin-left: .5em;
   font-family: 'Ilisarniq-Black';
 
   ${mediaQueries("phone")} {

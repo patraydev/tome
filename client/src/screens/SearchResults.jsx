@@ -13,20 +13,23 @@ import {
   UserCardImg,
   ButtonContainer,
 } from "../styled/Results.js";
-import { SearchForm, SearchInput } from "../styled/Forms.js";
+import { SearchResultsForm, SearchResultsInput } from "../styled/Forms.js";
 import { LibraryButton } from "../styled/Buttons.js";
 
 import { addToLibrary } from "../helpers/library.js";
 
 import "../assets/style/SearchResults.css";
 
-function SearchResults({ searchTerm, cocktails, currentUser, hideModal }) {
+function SearchResults({ searchTerm, cocktails, currentUser, hideModal, handleChange }) {
   const [filteredCocktails, setFilteredCocktails] = useState([]);
   const [displayCocktail, setDisplayCocktail] = useState(false);
   const [formData, setFormData] = useState({ searchTerm: searchTerm });
 
   const isAdmin = currentUser && currentUser.is_admin;
 
+
+  //filters cocktails list for search term
+  //just names for now 
   useEffect(() => {
     const filtered = cocktails.filter((cocktail) =>
       cocktail.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -34,17 +37,12 @@ function SearchResults({ searchTerm, cocktails, currentUser, hideModal }) {
     setFilteredCocktails(filtered);
   }, [cocktails, searchTerm]);
 
+  //displays first cocktail in filtered list
   useEffect(() => {
-    if (displayCocktail) {
       setDisplayCocktail(
-        cocktails.find((cocktail) => cocktail.id === displayCocktail.id)
+        filteredCocktails[0]
       );
-    } else {
-      setDisplayCocktail(
-        cocktails[Math.floor(Math.random() * cocktails.length)]
-      );
-    }
-  }, [cocktails, displayCocktail]);
+  }, [filteredCocktails]);
 
   // const handleDelete = async () => {
   //   const id = displayCocktail._id;
@@ -67,13 +65,13 @@ function SearchResults({ searchTerm, cocktails, currentUser, hideModal }) {
     });
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     [name]: value,
+  //   }));
+  // };
 
   return (
     <ResultsContainer>
@@ -84,15 +82,15 @@ function SearchResults({ searchTerm, cocktails, currentUser, hideModal }) {
           setDisplayCocktail={setDisplayCocktail}
         />
       </ResultsList>
-      <SearchForm>
-        <SearchInput
+      <SearchResultsForm>
+        <SearchResultsInput
           name="searchTerm"
           type="text"
           autoComplete="off"
           value={searchTerm}
           onChange={handleChange}
         />
-      </SearchForm>
+      </SearchResultsForm>
       <Display>
         {displayCocktail ? (
           <DisplayCocktail

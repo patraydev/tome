@@ -1,6 +1,8 @@
 import "../assets/style/DisplayCocktail.css";
 
 function DisplayCocktail({ displayCocktail }) {
+
+  
   return (
     <div className="cocktail-detail">
       <div className="detail name-detail">
@@ -9,11 +11,13 @@ function DisplayCocktail({ displayCocktail }) {
           {displayCocktail.creator ? `(${displayCocktail.creator})` : null}
         </div>
       </div>
+      { displayCocktail.ingredients ?
       <div className="detail ingredients" >
         {displayCocktail.ingredients.map((ingredient,index) => 
           (<p className='ingredient' key={index}>{ingredient}</p>)
         )}
-      </div>
+      </div> : null
+}
       <div className="detail bottom">
         {displayCocktail.bottom
           ? `bottom:     ${displayCocktail.bottom}`

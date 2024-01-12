@@ -9,7 +9,7 @@ import icon from "../assets/images/icon01.png";
 import { readLibrary, removeFromLibrary } from "../helpers/library.js";
 
 import {
-  ResultsContainer,
+  LibraryContainer,
   Title,
   ResultsList,
   Display,
@@ -30,9 +30,11 @@ function Library({ currentUser }) {
   useEffect(() => {
     setShow(true);
     const fetchLibrary = async () => {
-      console.log(currentUser);
       const result = currentUser && (await readLibrary(currentUser._id));
       setLibrary(result);
+      console.log(currentUser);
+      console.log(library);
+      setDisplayCocktail(library[0]);
     };
     fetchLibrary();
   }, [currentUser, toggleFetch]);
@@ -53,15 +55,10 @@ function Library({ currentUser }) {
     setToggleFetch((t) => !t);
   };
 
-  const colorway = currentUser
-    ? {
-        color: currentUser.foregroundColor,
-      }
-    : {};
 
   return (
     <Modal show={show} handleClose={hideModal} size="large">
-      <ResultsContainer>
+      <LibraryContainer>
         <Title>Library</Title>
         <ResultsList>
           <List cocktails={library} setDisplayCocktail={setDisplayCocktail} />
@@ -81,10 +78,10 @@ function Library({ currentUser }) {
           )}
         </Display>
         <UserCard>
-          <Link style={colorway} to="/dashboard/profile">
+          <Link to="/dashboard/profile">
             <UserCardImg src={icon} alt="user icon" />
             <UserCardName>
-              {currentUser.username || currentUser.email}
+              {currentUser ? currentUser.username || currentUser.email : null}
             </UserCardName>
           </Link>
         </UserCard>
@@ -105,7 +102,7 @@ function Library({ currentUser }) {
             </>
           ) : null}
         </ButtonContainer>
-      </ResultsContainer>
+      </LibraryContainer>
     </Modal>
   );
 }

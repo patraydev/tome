@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const ResultsContainer = styled.div`
+export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 0.5fr;
   gap: 10px;
@@ -11,8 +11,18 @@ export const ResultsContainer = styled.div`
   width: 100%;
 `;
 
+export const LibraryContainer = styled(Container)`
+
+`;
+
+export const ResultsContainer = styled(Container)`
+grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+`;
+
+
+
 export const Title = styled.div`
-  grid-column: 1 / 2;
+  grid-column: 1;
   grid-row: 1;
   font-size: 2em;
   align-self: flex-start;
@@ -25,7 +35,7 @@ export const Title = styled.div`
 
 export const ResultsList = styled.ul`
   grid-column: 1;
-  grid-row: 2 / 5;
+  grid-row: 3 / 10;
   margin-left: 5px;
   /* margin-bottom: 5px; */
   font-size: 1.5em;
@@ -64,7 +74,7 @@ export const ListItem = styled.li`
 
 export const Display = styled.div`
   grid-column: 2;
-  grid-row: 1 / 5;
+  grid-row: 1 / 10;
   /* border: 3px solid #fadde1; */
   border-radius: 25px;
   margin: 5px 0 5px 0;
@@ -73,7 +83,7 @@ export const Display = styled.div`
 
 export const UserCard = styled.div`
   grid-column: 3;
-  grid-row: 3 / 4;
+  grid-row: 8;
   border: 3px solid #fadde1;
   border-radius: 25px;
   max-width: 90%;
@@ -105,7 +115,7 @@ export const UserCardName = styled.div`
 
 export const ButtonContainer = styled.div`
   grid-column: 3;
-  grid-row: 4 / 5;
+  grid-row: 9/10;
   display: flex;
   flex-direction: column;
 `;
