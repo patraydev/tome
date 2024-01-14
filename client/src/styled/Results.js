@@ -33,9 +33,8 @@ export const Title = styled.div`
 
 `;
 
-export const ResultsList = styled.ul`
+export const List = styled.ul`
   grid-column: 1;
-  grid-row: 3 / 10;
   margin-left: 5px;
   /* margin-bottom: 5px; */
   font-size: 1.5em;
@@ -53,6 +52,15 @@ export const ResultsList = styled.ul`
       border: 2px solid ${props.theme.foregroundColor};
     `}
 `;
+
+export const ResultsList = styled(List)`
+grid-row: 3 / 10;
+`;
+
+export const LibraryList = styled(List)`
+grid-row: 2 / 4;
+`;
+
 
 export const ListItem = styled.li`
   border-radius: 15px;

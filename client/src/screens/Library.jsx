@@ -11,7 +11,7 @@ import { readLibrary, removeFromLibrary } from "../helpers/library.js";
 import {
   LibraryContainer,
   Title,
-  ResultsList,
+  LibraryList,
   Display,
   UserCard,
   UserCardImg,
@@ -27,17 +27,33 @@ function Library({ currentUser }) {
   const [toggleFetch, setToggleFetch] = useState(false);
   const history = useHistory();
 
+  //reads library of current user, sets library and display cocktail into state
   useEffect(() => {
-    setShow(true);
+    // setShow(true);
     const fetchLibrary = async () => {
       const result = currentUser && (await readLibrary(currentUser._id));
-      setLibrary(result);
-      console.log(currentUser);
-      console.log(library);
-      setDisplayCocktail(library[0]);
-    };
-    fetchLibrary();
-  }, [currentUser, toggleFetch]);
+      return result;
+  };
+  const setLibraryAndDisplayCocktail = (result) => {
+    setLibrary(result);
+    setDisplayCocktail(library[0]);
+  };
+    fetchLibrary().then(result=>{setLibraryAndDisplayCocktail(result)});
+    console.log(library);
+    console.log(displayCocktail);
+  }, [currentUser, toggleFetch, show]);
+
+
+  //didnt work missing something
+  // useEffect(() => {
+  //   console.log(currentUser.library);
+  //   setLibrary(currentUser.library);
+  //   console.log(library,library[0]);
+  //   setDisplayCocktail(library[0]);
+  //   console.log(displayCocktail);
+  //   console.log(currentUser,library,displayCocktail);
+  // }, [toggleFetch, show]);
+  
 
   const hideModal = () => {
     setShow(false);
@@ -60,9 +76,9 @@ function Library({ currentUser }) {
     <Modal show={show} handleClose={hideModal} size="large">
       <LibraryContainer>
         <Title>Library</Title>
-        <ResultsList>
+        <LibraryList>
           <List cocktails={library} setDisplayCocktail={setDisplayCocktail} />
-        </ResultsList>
+        </LibraryList>
         <Display>
           {displayCocktail ? (
             <DisplayCocktail
